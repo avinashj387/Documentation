@@ -1,5 +1,3 @@
-# DocumentationHere's a well-structured API documentation in a professional format:
-
 # API Documentation
 
 ## Table of Contents
@@ -192,12 +190,6 @@
 
 ### Implementation Notes:
 1. All endpoints require Bearer Token authentication
-2. Pagination parameters follow consistent patterns
-3. Category/Subcategory endpoints use -1 for unlimited results
-4. Leaderboard endpoints require POST with specific payloads
+2. Category/Subcategory endpoints use -1 for unlimited results
+3. Leaderboard endpoints require POST with specific payloads
 
-### Recommended Improvements:
-1. Standardize parameter naming (PagesiPa → pageSize)
-2. Document all possible status values
-3. Add versioning to API routes
-4. Document error responses
