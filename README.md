@@ -698,5 +698,5 @@
 ### Implementation Notes:
 1. All endpoints require Bearer Token authentication
 2. Category/Subcategory endpoints use -1 for unlimited results
-3. Leaderboard endpoints require POST with specific payloads
+
 
