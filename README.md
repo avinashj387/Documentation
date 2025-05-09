@@ -530,28 +530,139 @@
 - **URL**: `https://gogetempowered.com/api/v1/SubCategory/-1/-1/null/{categoryId}/`
 - **Authentication**: Bearer Token
 - **Response**: Array of subcategories
-  ```json
-  [
+```json
+[
     {
-      "id": 425,
-      "name": "Product training"
+        "id": 425,
+        "categoryId": 178,
+        "code": "SITWD",
+        "name": "Product training",
+        "categoryName": "Software,IT and Web Development ",
+        "sequenceNo": 1,
+        "thumbnailPath": null
     }
-  ]
-  ```
+]
+```
 
 ### 8. Get Category Courses
 - **Endpoint**: `GET /api/v1/mycourses/{page}/{pagesize}/{categoryId}/null/null/null/null/true/true/recently/null/All/null/null/null/null`
 - **URL**: `https://gogetempowered.com/api/v1/mycourses/{page}/{pagesize}/{categoryId}/null/null/null/null/true/true/recently/null/All/null/null/null/null`
 - **Authentication**: Bearer Token
 - **Response**: Array of courses in category
-  ```json
-  [
+ ```json
+[
     {
-      "courseId": 16447,
-      "title": "gamefication_normal"
+        "courseId": 16447,
+        "title": "gamefication_normal",
+        "mission": null,
+        "description": "<p>learn about LMS</p>",
+        "thumbnailPath": "/assets/img/Thumbnail_vectors/img_thumb26.jpg",
+        "categoryName": "Software, IT and Web Development",
+        "subCategoryName": "Product training",
+        "subSubCategoryName": "LMS training",
+        "code": "7026",
+        "courseFee": 0.0,
+        "currency": "",
+        "courseType": "elearning",
+        "completionPeriodDays": 3,
+        "courseCreationdDays": 0,
+        "numberofModules": 2,
+        "categoryId": 178,
+        "subCategoryId": 425,
+        "subSubCategoryId": null,
+        "courseRating": 0.0,
+        "status": null,
+        "isFeedback": false,
+        "isAssignment": false,
+        "isAssessment": false,
+        "isPreAssessment": false,
+        "isCertificateIssued": true,
+        "courseStartDate": null,
+        "courseCompleteDate": null,
+        "rewardPoint": null,
+        "isCourseApplicable": false,
+        "courseApprovalStatus": "",
+        "competencyCategory": "--",
+        "competencyCategoryID": 0,
+        "assessmentPercentage": null,
+        "scheduleRequestStatus": "",
+        "durationInMinutes": 0,
+        "assessmentResult": null,
+        "isPreRequisiteCourse": false,
+        "isExternalProvider": false,
+        "externalProvider": null,
+        "courseURL": "",
+        "isRetraining": false,
+        "nodalApprovalStatus": "Not Requested",
+        "isSCORM": false,
+        "firstAccessDate": null,
+        "lastAccessDate": null,
+        "timeSpent": null,
+        "views": 0,
+        "progressinpercentage": 0,
+        "score": 0,
+        "assignmentType": "",
+        "courseDueDate": "NA",
+        "alreadyEnrolled": null,
+        "certificationStatus": null
+    },
+    {
+        "courseId": 15358,
+        "title": "BCPL Test course",
+        "mission": null,
+        "description": "",
+        "thumbnailPath": "/assets/img/Thumbnail_vectors/img_thumb78.jpg",
+        "categoryName": "Software, IT and Web Development",
+        "subCategoryName": "Product training",
+        "subSubCategoryName": "LMS training",
+        "code": "6875",
+        "courseFee": 0.0,
+        "currency": "",
+        "courseType": "elearning",
+        "completionPeriodDays": 0,
+        "courseCreationdDays": 0,
+        "numberofModules": 2,
+        "categoryId": 178,
+        "subCategoryId": 425,
+        "subSubCategoryId": null,
+        "courseRating": 0.0,
+        "status": null,
+        "isFeedback": true,
+        "isAssignment": false,
+        "isAssessment": true,
+        "isPreAssessment": false,
+        "isCertificateIssued": false,
+        "courseStartDate": null,
+        "courseCompleteDate": null,
+        "rewardPoint": null,
+        "isCourseApplicable": true,
+        "courseApprovalStatus": "",
+        "competencyCategory": "--",
+        "competencyCategoryID": 0,
+        "assessmentPercentage": null,
+        "scheduleRequestStatus": "",
+        "durationInMinutes": 0,
+        "assessmentResult": null,
+        "isPreRequisiteCourse": false,
+        "isExternalProvider": false,
+        "externalProvider": null,
+        "courseURL": "",
+        "isRetraining": false,
+        "nodalApprovalStatus": "Not Requested",
+        "isSCORM": false,
+        "firstAccessDate": null,
+        "lastAccessDate": null,
+        "timeSpent": null,
+        "views": 0,
+        "progressinpercentage": 0,
+        "score": 0,
+        "assignmentType": "Recommended",
+        "courseDueDate": "NA",
+        "alreadyEnrolled": null,
+        "certificationStatus": null
     }
-  ]
-  ```
+]
+```
 
 ---
 
