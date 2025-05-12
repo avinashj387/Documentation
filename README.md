@@ -450,6 +450,54 @@
     ]
   }
   ```
+  ### 11. Get Quize Corner
+- **Endpoint**: `GET api/v1/QuizzesManagement/GetAllQuizzesManagementForEndUser`
+- **URL**: `https://gogetempowered.com/api/v1/QuizzesManagement/GetAllQuizzesManagementForEndUser`
+- **Authentication**: Bearer Token
+- **Response**: 
+```json
+[
+  {
+    "id": 1082,
+    "date": "0001-01-01T00:00:00",
+    "quizTitle": "Test 2022 Quiz ",
+    "applicabilityParameter": null,
+    "applicabilityParameterValue": null,
+    "applicabilityParameterValueId": null,
+    "targetResponseCount": 0,
+    "status": false
+  },
+  {
+    "id": 1090,
+    "date": "0001-01-01T00:00:00",
+    "quizTitle": "demo 12345",
+    "applicabilityParameter": null,
+    "applicabilityParameterValue": null,
+    "applicabilityParameterValueId": null,
+    "targetResponseCount": 0,
+    "status": false
+  }
+]
+```
+
+### 12. Get Survey Corner
+
+- **Endpoint**: `GET /api/v1/SurveyManagement/GetAllSurveyManagementForEndUser`
+- **URL**: `https://gogetempowered.com`
+- **Authentication**: Bearer Token required
+
+### 13. Get News Updates
+
+- **Endpoint**: `GET /api/v1/NewsUpdates`
+- **URL**: `https://gogetempowered.com/api/v1/PollsManagement/GetAllPollsManagementForEndUser`
+- **Authentication**: Bearer Token
+
+### 14. Get Polls Corner
+- * **Endpoint**: `GET /api/v1/PollsManagement/GetAllPollsManagementForEndUser`
+-  **URL**: `https://gogetempowered.com/api/v1/PollsManagement/GetAllPollsManagementForEndUser`
+- **Authentication**: Bearer Token
+
+  
 
 ---
 
