@@ -1210,7 +1210,7 @@
   - `isSecuredContent`: (boolean) Default false
 
 * **Success Response**: 1
-```
+
 ### 12.5 Upload PDF Content
 * **Endpoint**: `POST /api/v1/LCMS`
 * **Authentication**: Bearer Token required
