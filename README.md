@@ -651,7 +651,6 @@
   `https://gogetempowered.com/api/v1/mycourses/1/10/null/null/null/null/null/null/true/a-z/null/All/null/null/null/null`
 
 * **Authentication**: Bearer Token
-
 * **Response**:
 ```json
 [
