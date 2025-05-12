@@ -641,9 +641,9 @@
   }
 ]
 ```
-## Catalog {#catalog}
+## Catalog
 
-### 8.1 Get My Courses {#81-get-my-courses}
+### 8.1 Get My Courses
 * **Endpoint**:  
   `GET /api/v1/mycourses/{page}/{pageSize}/null/null/null/null/null/null/true/a-z/null/All/null/null/null/null`
 
@@ -689,7 +689,7 @@
 ]
 ```
 
-### 8.2 Get Course Count {#82-get-course-count}
+### 8.2 Get Course Count
 * **Endpoint**:  
   `GET /api/v1/mycourses/count/null/null/null/null/null/null/true/a-z/null/All/null/null/null/null`
 
@@ -701,7 +701,7 @@
 * **Response**:  
   `1284` (Total course count as integer)
 
-### 8.3 Get Selected Languages {#83-get-selected-languages}
+### 8.3 Get Selected Languages
 * **Endpoint**:  
   `GET /api/v1/Customer/GetSelectedLanguages`
 
@@ -726,7 +726,7 @@
 ]
 ```
 
-### 8.4 Get Course Enrollment Config {#84-get-course-enrollment-config}
+### 8.4 Get Course Enrollment Config
 * **Endpoint**:  
   `GET /api/v1/ConfigurableParameters/GetValue/COURSE_ENROLL`
 
@@ -742,7 +742,7 @@
 }
 ```
 
-### 8.5 Get All Categories {#85-get-all-categories}
+### 8.5 Get All Categories 
 * **Endpoint**:  
   `GET /api/v1/Category`
 
