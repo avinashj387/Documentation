@@ -497,8 +497,88 @@
 -  **URL**: `https://gogetempowered.com/api/v1/PollsManagement/GetAllPollsManagementForEndUser`
 - **Authentication**: Bearer Token
 
+### 15. Get Publications by Folder
 
+- **Endpoint**: `GET /api/v1/Publications/GetAllPublicationsByFolders/{folderId}`
+- **URL**: `https://gogetempowered.com/api/v1/Publications/GetAllPublicationsByFolders/null`
+- **Authentication**: Bearer Token 
 ---
+### 16. Get Social File
+
+* **Endpoint**: `POST /api/v1/Publications/GetSocialFile`
+* **URL**: `https://gogetempowered.com/api/v1/Publications/GetSocialFile`
+* **Authentication**: Bearer Token required
+* **Request Body** (JSON):
+
+  ```json
+  {
+    "socialfile": "/enth/Publication/.pdf/638779104850058669.pdf"
+  }
+  ```
+* **Description**:
+  Retrieves the specified social PDF file (typically for viewing or downloading).
+
+  
+### 17. Get Central Book Library Categories
+
+- **Endpoint**: `GET /api/v1/CentralBookLibrary/GetAllCategory`
+- **URL**: `https://gogetempowered.com/api/v1/CentralBookLibrary/GetAllCategory`
+- **Authentication**: Bearer Token required
+
+- **Response**: 
+```json
+[
+  {
+    "id": 1,
+    "category": "Product Management"
+  },
+  {
+    "id": 2,
+    "category": "Communication"
+  }
+]
+```
+### 18. Get Configurable Parameter Value – SHOW\_POLICYLABEL
+
+- **Endpoint**: `GET /api/v1/ConfigurableParameters/GetValue/SHOW_POLICYLABEL`
+- **URL**: `https://gogetempowered.com/api/v1/ConfigurableParameters/GetValue/SHOW_POLICYLABEL`
+- **Authentication**: Bearer Token required
+
+- **Response**: 
+
+```json
+{
+  "value": "Yes"
+}
+```
+
+
+### 19. Get Policy Document
+
+- **Endpoint**: `GET /api/v1/PolicyDocument`
+- **URL**: `https://gogetempowered.com/api/v1/PolicyDocument`
+- **Authentication**: Bearer Token required
+
+```json
+[
+  {
+    "customerCode": null,
+    "applicabilityParameter": null,
+    "applicabilityParameterValue": null,
+    "applicabilityParameterValueId": null,
+    "id": 4,
+    "policyId": "enth4",
+    "policyDescription": "Quality",
+    "commanToAllUser": true,
+    "modifiedDate": "11/10/2022 7:05:33 AM",
+    "reviewFrequency": "Monthly",
+    "ruleId": "Quality4",
+    "conditionRegardToOtherRules": "",
+    "contentPath": "/enth/.pdf/638036805198254935..pdf",
+    "policyLabel": "policy d"
+  }
+]
+```
 
 ### Implementation Notes:
 1. All endpoints require Bearer Token authentication
