@@ -5,6 +5,7 @@
    - 1.1 [Get Paginated Courses](#1-get-paginated-courses)
    - 1.2 [Get Course Module](#2-get-course-module)
    - 1.3 [Get To-Do List](#3-get-to-do-list)
+   - 1.4 [Get My Courses](#20-get-my-courses)
 
 2. [Leaderboard](#leaderboard)
    - 2.1 [Get User Rankings](#4-get-user-rankings)
@@ -601,6 +602,37 @@
     "conditionRegardToOtherRules": "",
     "contentPath": "/enth/.pdf/638036805198254935..pdf",
     "policyLabel": "policy d"
+  }
+]
+```
+### 20. Get My Courses 
+* **Endpoint**:  
+  `GET /api/v1/mycourses/{page}/{pageSize}/null/null/null/null/null/null/true/a-z/null/All/null/null/null/null`
+
+* **URL**:  
+  `https://gogetempowered.com/api/v1/mycourses/1/10/null/null/null/null/null/null/true/a-z/null/All/null/null/null/null`
+
+* **Authentication**: Bearer Token
+
+* **Response**:
+```json
+[
+  {
+    "courseId": 13014,
+    "title": "2004",
+    "description": "<p>anfjs fdmngjrf dngtltrif sndjf wjsdinc vbfhudsd ndflkj</p>",
+    "thumbnailPath": "../../../assets/img/Thumbnail_vectors/img_thumb150.jpg",
+    "courseType": "elearning",
+    "categoryName": "--",
+    "courseFee": 0.0,
+    "numberofModules": 1,
+    "courseRating": 0.0,
+    "isCertificateIssued": true,
+    "progressinpercentage": 0,
+    "score": 0,
+    "courseDueDate": "NA",
+    "isSCORM": true,
+    "nodalApprovalStatus": "Not Requested"
   }
 ]
 ```
