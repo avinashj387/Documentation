@@ -1234,7 +1234,7 @@
 
 
 
-## Module Management {#module-management}
+## Module Management
 
 ### 13.1 Get Module Data {#131-get-module-data}
 * **Endpoint**: `POST /api/v1/module/GetModuleData`
@@ -1264,7 +1264,7 @@
 }
 ```
 
-### 13.2 Get Media Count {#132-get-media-count}
+### 13.2 Get Media Count
 * **Endpoint**: `GET /api/v1/LCMS/GetMediaCount/true`
 * **Authentication**: Bearer Token
 * **Response**:
@@ -1282,7 +1282,7 @@
 }
 ```
 
-### 13.3 Search LCMS Media {#133-search-lcms-media}
+### 13.3 Search LCMS Media
 * **Endpoint**: `POST /api/v1/LCMS/GetLCMSMedia`
 * **Authentication**: Bearer Token
 * **Payload**:
