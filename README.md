@@ -5,6 +5,7 @@
    - 1.1 [Get Paginated Courses](#1-get-paginated-courses)
    - 1.2 [Get Course Module](#2-get-course-module)
    - 1.3 [Get To-Do List](#3-get-to-do-list)
+   - 1.4 [Get My Courses](#20-get-my-courses)
 
 2. [Leaderboard](#leaderboard)
    - 2.1 [Get User Rankings](#4-get-user-rankings)
@@ -31,7 +32,12 @@
    - 7.1 [Get Publications by Folder](#15-get-publications-by-folder)
    - 7.2 [Get Social File](#16-get-social-file)
    - 7.3 [Get Policy Document](#19-get-policy-document)
-
+8. [Catalog](#catalog)
+   - 8.1 [Get My Courses](#91-get-my-courses)
+   - 8.2 [Get Course Count](#92-get-course-count)
+   - 8.3 [Get Selected Languages](#93-get-selected-languages)
+   - 8.4 [Get Course Enrollment Config](#94-get-course-enrollment-config)
+   - 8.5 [Get All Categories](#95-get-all-categories)
 
 ## My Courses
 
@@ -604,7 +610,167 @@
   }
 ]
 ```
+### 20. Get My Courses 
+* **Endpoint**:  
+  `GET /api/v1/mycourses/{page}/{pageSize}/null/null/null/null/null/null/true/a-z/null/All/null/null/null/null`
 
+* **URL**:  
+  `https://gogetempowered.com/api/v1/mycourses/1/10/null/null/null/null/null/null/true/a-z/null/All/null/null/null/null`
+
+* **Authentication**: Bearer Token
+
+* **Response**:
+```json
+[
+  {
+    "courseId": 13014,
+    "title": "2004",
+    "description": "<p>anfjs fdmngjrf dngtltrif sndjf wjsdinc vbfhudsd ndflkj</p>",
+    "thumbnailPath": "../../../assets/img/Thumbnail_vectors/img_thumb150.jpg",
+    "courseType": "elearning",
+    "categoryName": "--",
+    "courseFee": 0.0,
+    "numberofModules": 1,
+    "courseRating": 0.0,
+    "isCertificateIssued": true,
+    "progressinpercentage": 0,
+    "score": 0,
+    "courseDueDate": "NA",
+    "isSCORM": true,
+    "nodalApprovalStatus": "Not Requested"
+  }
+]
+```
+## Catalog {#catalog}
+
+### 8.1 Get My Courses {#81-get-my-courses}
+* **Endpoint**:  
+  `GET /api/v1/mycourses/{page}/{pageSize}/null/null/null/null/null/null/true/a-z/null/All/null/null/null/null`
+
+* **URL**:  
+  `https://gogetempowered.com/api/v1/mycourses/1/10/null/null/null/null/null/null/true/a-z/null/All/null/null/null/null`
+
+* **Authentication**: Bearer Token
+
+* **Response**:
+```json
+[
+  {
+    "courseId": 13014,
+    "title": "2004",
+    "mission": null,
+    "description": "<p>anfjs fdmngjrf dngtltrif sndjf wjsdinc vbfhudsd ndflkj</p>",
+    "thumbnailPath": "../../../assets/img/Thumbnail_vectors/img_thumb150.jpg",
+    "categoryName": "--",
+    "subCategoryName": "",
+    "subSubCategoryName": "",
+    "code": "5004",
+    "courseFee": 0.0,
+    "currency": "",
+    "courseType": "elearning",
+    "completionPeriodDays": 0,
+    "courseCreationdDays": 0,
+    "numberofModules": 1,
+    "categoryId": null,
+    "subCategoryId": 0,
+    "subSubCategoryId": null,
+    "courseRating": 0.0,
+    "status": null,
+    "isFeedback": false,
+    "isAssignment": false,
+    "isAssessment": false,
+    "isPreAssessment": false,
+    "isCertificateIssued": true,
+    "isSCORM": true,
+    "progressinpercentage": 0,
+    "score": 0,
+    "courseDueDate": "NA",
+    "nodalApprovalStatus": "Not Requested"
+  }
+]
+```
+
+### 8.2 Get Course Count {#82-get-course-count}
+* **Endpoint**:  
+  `GET /api/v1/mycourses/count/null/null/null/null/null/null/true/a-z/null/All/null/null/null/null`
+
+* **URL**:  
+  `https://gogetempowered.com/api/v1/mycourses/count/null/null/null/null/null/null/true/a-z/null/All/null/null/null/null`
+
+* **Authentication**: Bearer Token
+
+* **Response**:  
+  `1284` (Total course count as integer)
+
+### 8.3 Get Selected Languages {#83-get-selected-languages}
+* **Endpoint**:  
+  `GET /api/v1/Customer/GetSelectedLanguages`
+
+* **URL**:  
+  `https://gogetempowered.com/api/v1/Customer/GetSelectedLanguages`
+
+* **Authentication**: Bearer Token
+
+* **Response**:
+```json
+[
+  {
+    "code": "en",
+    "isDeleted": false,
+    "name": "English"
+  },
+  {
+    "code": "ar",
+    "isDeleted": false,
+    "name": "Arabic"
+  }
+]
+```
+
+### 8.4 Get Course Enrollment Config {#84-get-course-enrollment-config}
+* **Endpoint**:  
+  `GET /api/v1/ConfigurableParameters/GetValue/COURSE_ENROLL`
+
+* **URL**:  
+  `https://gogetempowered.com/api/v1/ConfigurableParameters/GetValue/COURSE_ENROLL`
+
+* **Authentication**: Bearer Token
+
+* **Response**:
+```json
+{
+  "value": "TrainingRequest"
+}
+```
+
+### 8.5 Get All Categories {#85-get-all-categories}
+* **Endpoint**:  
+  `GET /api/v1/Category`
+
+* **URL**:  
+  `https://gogetempowered.com/api/v1/Category`
+
+* **Authentication**: Bearer Token
+
+* **Response**:
+```json
+[
+  {
+    "id": 179,
+    "code": "526",
+    "name": "Comprehensive Career Programs",
+    "imagePath": "enth/thumbnail/course/638575840919183387.png",
+    "sequenceNo": 1
+  },
+  {
+    "id": 178,
+    "code": "079",
+    "name": "Software,IT and Web Development",
+    "imagePath": "enth/thumbnail/course/638575389614925644.png",
+    "sequenceNo": 2
+  }
+]
+```
 ### Implementation Notes:
 1. All endpoints require Bearer Token authentication
 2. Category/Subcategory endpoints use -1 for unlimited results
