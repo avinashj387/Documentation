@@ -33,12 +33,14 @@
    - 7.2 [Get Social File](#16-get-social-file)
    - 7.3 [Get Policy Document](#19-get-policy-document)
 8. [Catalog](#catalog)
-   - 8.1 [Get My Courses](#91-get-my-courses)
-   - 8.2 [Get Course Count](#92-get-course-count)
-   - 8.3 [Get Selected Languages](#93-get-selected-languages)
-   - 8.4 [Get Course Enrollment Config](#94-get-course-enrollment-config)
-   - 8.5 [Get All Categories](#95-get-all-categories)
-
+   - 8.1 [Get My Courses](#81-get-my-courses)
+   - 8.2 [Get Course Count](#82-get-course-count)
+   - 8.3 [Get Selected Languages](#83-get-selected-languages)
+   - 8.4 [Get Course Enrollment Config](#84-get-course-enrollment-config)
+   - 8.5 [Get All Categories](#85-get-all-categories)
+9. [Competency](#competency)
+    - 9.1 [Get Competency Hub Data](#91-get-competency-hub-data)
+    - 9.2 [Get Competency Spider Chart](#92-get-competency-spider-chart)
 ## My Courses
 
 ### 1. Get Paginated Courses
@@ -769,6 +771,56 @@
     "sequenceNo": 2
   }
 ]
+```
+
+
+## Competency 
+
+### 9.1 Get Competency Hub Data 
+* **Endpoint**: `POST /api/v1/Report/Competency/GetCompetencyHubData`
+* **URL**: `https://gogetempowered.com/api/v1/Report/Competency/GetCompetencyHubData`
+* **Authentication**: Bearer Token
+* **Payload**:
+```json
+{"Page":1,"PageSize":10}
+```
+* **Response(Trimed responce)**:
+```json
+{
+  "success": true,
+  "data": {
+    "records": [
+      {
+        "categoryName": "negotiation skills",
+        "competencyName": "bargaining",
+        "competencyID": "288",
+        "requiredLevel": "Level 1"
+      },
+      {
+        "categoryName": "Recruiter",
+        "competencyName": "Channel",
+        "competencyID": "314",
+        "requiredLevel": "Level 1"
+      }
+    ]
+  }
+}
+```
+
+### 9.2 Get Competency Spider Chart 
+* **Endpoint**: `GET /api/v1/CompetencyCategory/GetCompetencySpiderchart`
+* **URL**: `https://gogetempowered.com/api/v1/CompetencyCategory/GetCompetencySpiderchart`
+* **Authentication**: Bearer Token
+* **Response(Trimed responce)**:
+```json
+{
+  "counts": [66.67, 50.0, 100.0],
+  "competencyName": [
+    "Collaboration",
+    "Excellence Orientation",
+    "Customer Focus"
+  ]
+}
 ```
 ### Implementation Notes:
 1. All endpoints require Bearer Token authentication
