@@ -480,6 +480,23 @@
 ]
 ```
 
+### 12. Get Survey Corner
+
+- **Endpoint**: `GET /api/v1/SurveyManagement/GetAllSurveyManagementForEndUser`
+- **URL**: `https://gogetempowered.com`
+- **Authentication**: Bearer Token required
+
+### 13. Get News Updates
+
+- **Endpoint**: `GET /api/v1/NewsUpdates`
+- **URL**: `https://gogetempowered.com/api/v1/PollsManagement/GetAllPollsManagementForEndUser`
+- **Authentication**: Bearer Token
+
+### 14. Get Polls Corner
+- * **Endpoint**: `GET /api/v1/PollsManagement/GetAllPollsManagementForEndUser`
+-  **URL**: `https://gogetempowered.com/api/v1/PollsManagement/GetAllPollsManagementForEndUser`
+- **Authentication**: Bearer Token
+
 
 ---
 
