@@ -450,6 +450,36 @@
     ]
   }
   ```
+  ### 11. Get Quize Corner
+- **Endpoint**: `GET api/v1/QuizzesManagement/GetAllQuizzesManagementForEndUser`
+- **URL**: `https://gogetempowered.com/api/v1/QuizzesManagement/GetAllQuizzesManagementForEndUser`
+- **Authentication**: Bearer Token
+- **Response**: 
+```json
+[
+  {
+    "id": 1082,
+    "date": "0001-01-01T00:00:00",
+    "quizTitle": "Test 2022 Quiz ",
+    "applicabilityParameter": null,
+    "applicabilityParameterValue": null,
+    "applicabilityParameterValueId": null,
+    "targetResponseCount": 0,
+    "status": false
+  },
+  {
+    "id": 1090,
+    "date": "0001-01-01T00:00:00",
+    "quizTitle": "demo 12345",
+    "applicabilityParameter": null,
+    "applicabilityParameterValue": null,
+    "applicabilityParameterValueId": null,
+    "targetResponseCount": 0,
+    "status": false
+  }
+]
+```
+
 
 ---
 
