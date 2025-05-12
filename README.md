@@ -868,7 +868,7 @@
 }
 ```
 
-## Calendar {#calendar}
+## Calendar
 
 ### 10.1 Get Date Format 
 * **Endpoint**: `GET /api/v1/ConfigurableParameters/GetValue/APPLICATION_DATE_FORMAT`
@@ -1001,7 +1001,7 @@
 ]
 ```
 
-## Profile {#profile}
+## Profile
 
 ### 11.1 Get Encrypted User ID {#111-get-encrypted-user-id}
 * **Endpoint**: `POST /api/v1/User/GetEncryptedUserId`
@@ -1011,7 +1011,8 @@
 {"encryptedUserId":"fk2zuGnuQ/lJ2By+PLvNTg=="}
 ```
 
-### 11.2 Get Profile Permissions {#112-get-profile-permissions}
+### 11.2 Get Profile Permissions
+
 * **Endpoint**: `GET /api/v1/user/GetProfilePermission`
 * **Response**:
 ```json
