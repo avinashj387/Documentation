@@ -41,7 +41,22 @@
 9. [Competency](#competency)
     - 9.1 [Get Competency Hub Data](#91-get-competency-hub-data)
     - 9.2 [Get Competency Spider Chart](#92-get-competency-spider-chart)
-
+10. [Calendar](#calendar)
+    - 10.1 [Get Date Format](#101-get-date-format)
+    - 10.2 [Get ILT Calendar Data](#102-get-ilt-calendar-data)
+    - 10.3 [Check Batch Nomination Status](#103-check-batch-nomination-status)
+    - 10.4 [Get Calendar Help Info](#104-get-calendar-help-info)
+    - 10.5 [Get Academy List](#105-get-academy-list)
+    - 10.6 [Get Organization Calendar](#106-get-organization-calendar)
+    - 10.7 [Export ILT Calendar](#107-export-ilt-calendar)
+    - 10.8 [Export Trainer Calendar](#108-export-trainer-calendar)
+    - 10.9 [Get Schedule Data](#109-get-schedule-data)
+    - 10.10 [Get Schedule Count](#1010-get-schedule-count)
+    - 10.11 [Check Past Schedule Cancellation](#1011-check-past-schedule-cancellation)
+    - 10.12 [Get Localization Strings](#1012-get-localization-strings)
+    - 10.13 [Get Nomination Data](#1013-get-nomination-data)
+    - 10.14 [Get Nomination Count](#1014-get-nomination-count)
+    - 10.15 [Get Training Attendance](#1015-get-training-attendance)
 ## My Courses
 
 ### 1. Get Paginated Courses
@@ -823,6 +838,144 @@
   ]
 }
 ```
+
+## Calendar {#calendar}
+
+### 10.1 Get Date Format 
+* **Endpoint**: `GET /api/v1/ConfigurableParameters/GetValue/APPLICATION_DATE_FORMAT`
+* **Response**: 
+```json
+{"value":"dd MMM yyyy"}
+```
+
+### 10.2 Get ILT Calendar Data 
+* **Endpoint**: `POST /api/v1/calendar/ILTCalenderData`
+* **Payload**:
+```json
+{"fromDate":"2025-05-01T00:00:00.000Z","toDate":"2025-06-29T18:30:00.000Z"}
+```
+
+### 10.3 Check Batch Nomination Status
+* **Endpoint**: `GET /api/v1/c/ILTBatch/IsBatchwiseNominationEnabled`
+* **Response**: `"No"`
+
+### 10.4 Get Calendar Help Info
+* **Endpoint**: `GET /api/v1/QuickHelpInfo/GetHelpByType/l_cal`
+
+### 10.5 Get Academy List
+* **Endpoint**: `GET /api/v1/ILTSchedule/GetAcademyTypeAhead/Internal`
+* **Response**:
+```json
+[
+  {"id":1,"title":"MIT"},
+  {"id":2,"title":"Enthralltech"}
+]
+```
+
+### 10.6 Get Organization Calendar
+* **Endpoint**: `POST /api/v1/calendar/OrganizationCalenderData`
+* **Payload**:
+```json
+{"fromDate":"2025-05-01T00:00:00.000Z","toDate":"2025-06-29T18:30:00.000Z"}
+```
+* **Response**:
+```json
+[
+  {
+    "courseId": 9734,
+    "moduleName": "3742_VILT Type Course",
+    "moduleType": "vilt"
+  }
+]
+```
+
+### 10.7 Export ILT Calendar
+* **Endpoint**: `POST /api/v1/calendar/ILTCalenderDataExport`
+* **Payload**:
+```json
+{"fromDate":"2025-05-01T00:00:00.000Z","toDate":"2025-06-29T18:30:00.000Z"}
+```
+
+### 10.8 Export Trainer Calendar
+* **Endpoint**: `POST /api/v1/calendar/ILTCalenderDataForTrainerExport`
+* **Payload**: Same as 10.7
+
+### 10.9 Get Schedule Data
+* **Endpoint**: `POST /api/v1/ILTSchedule/GetScheduleData`
+* **Payload**:
+```json
+{"Page":1,"PageSize":10,"showAllData":"false"}
+```
+* **Response**:
+```json
+[
+  {
+    "id": 7020,
+    "startDate": "2025-05-12T00:00:00",
+    "startTime": "15:50:00"
+  }
+]
+```
+
+### 10.10 Get Schedule Count
+* **Endpoint**: `GET /api/v1/ILTSchedule/count/null/null/false`
+* **Response**: `753`
+
+### 10.11 Check Past Schedule Cancellation
+* **Endpoint**: `GET /api/v1/ConfigurableParameters/GetValue/Enable_PastScheduleCancel`
+* **Response**: 
+```json
+{"value":"Yes"}
+```
+
+### 10.12 Get Localization Strings
+* **Endpoint**: `GET /assets/i18n/en.json`
+* **Response**:
+```json
+{
+  "SUBMIT_ASSIGNMENT": "Please submit assignment...",
+  "CUSTOMER": {
+    "HEADER": "Customer Master"
+  }
+}
+```
+
+### 10.13 Get Nomination Data
+* **Endpoint**: `POST /api/v1/TrainingNomination/GetNominationData`
+* **Payload**:
+```json
+{"page":1,"pageSize":10,"showAllData":"false"}
+```
+* **Response**:
+```json
+[
+  {
+    "id": 7019,
+    "startDate": "2025-05-05T00:00:00"
+  }
+]
+```
+
+### 10.14 Get Nomination Count
+* **Endpoint**: `GET /api/v1/TrainingNomination/count/null/null/false`
+* **Response**: `622`
+
+### 10.15 Get Training Attendance
+* **Endpoint**: `GET /api/v1/ILTTrainingAttendance/1/10/null/null/false`
+* **Response**:
+```json
+[
+  {
+    "scheduleCode": "SC12745",
+    "startDate": "2025-05-12T00:00:00"
+  }
+]
+```
+
+
+
+
+
 ### Implementation Notes:
 1. All endpoints require Bearer Token authentication
 2. Category/Subcategory endpoints use -1 for unlimited results
