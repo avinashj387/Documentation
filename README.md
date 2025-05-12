@@ -41,6 +41,7 @@
 9. [Competency](#competency)
     - 9.1 [Get Competency Hub Data](#91-get-competency-hub-data)
     - 9.2 [Get Competency Spider Chart](#92-get-competency-spider-chart)
+
 ## My Courses
 
 ### 1. Get Paginated Courses
