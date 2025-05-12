@@ -497,7 +497,6 @@
 -  **URL**: `https://gogetempowered.com/api/v1/PollsManagement/GetAllPollsManagementForEndUser`
 - **Authentication**: Bearer Token
 
-  
 
 ---
 
