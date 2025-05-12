@@ -1211,32 +1211,22 @@
 
 * **Success Response**: 1
 ```
-
-### 12.5 Upload PDF Content {#125-upload-pdf-content}
+### 12.5 Upload PDF Content
 * **Endpoint**: `POST /api/v1/LCMS`
-* **Authentication**: Bearer Token
+* **Authentication**: Bearer Token required
 * **Content-Type**: `multipart/form-data`
-* **Request Payload** (from image):
+* **Request Parameters**:
 
-| Field | Type | Required | Description | Example Value |
-|-------|------|----------|-------------|---------------|
-| `name` | string | Yes | Content name | "sahich" |
-| `description` | string | Yes | Content description | "how sahich become one of the top hotel industry" |
-| `contentType` | string | Yes | MIME type | "application/pdf" |
-| `version` | string | Yes | Version number | "1.0" |
-| `metaData` | string | No | Additional metadata | "sahich is star performer industry" |
-| `originalFileName` | string | Yes | Original filename | "UBI APIM Integration Document_LMSUnionVidya (1).pdf" |
-| `language` | string | Yes | Language code | "en" |
+| Field | Type | Required | Description | Example |
+|-------|------|----------|-------------|---------|
+| `name` | string | Yes | Content title | "sahich" |
+| `description` | string | Yes | Content description | "How sahich became top hotel industry" |
+| `contentType` | string | Yes | Must be "application/pdf" | "application/pdf" |
+| `version` | string | Yes | Content version | "1.0" |
+| `originalFileName` | string | Yes | Original PDF filename | "Document.pdf" |
+| `language` | string | Yes | 2-letter language code | "en" |
 | `duration` | integer | Yes | Duration in minutes | 60 |
-| `isBuiltInAssessment` | boolean | Yes | Enable assessments | true |
-| `isMobileCompatible` | boolean | Yes | Mobile support | true |
-| `ismodulecreate` | boolean | Yes | Create as module | true |
-| `issecuredcontent` | boolean | Yes | Content protection | false |
-| `fileForUpload` | binary | Yes | PDF file | (binary data) |
-
-* **Success Response**:   1
-                     
-
+| `fileForUpload` | binary | Yes | PDF file content | - |
 
 
 
