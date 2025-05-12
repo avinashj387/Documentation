@@ -75,6 +75,11 @@
     - 11.13 [Get User Certificates](#1113-get-user-certificates)
     - 11.14 [Get User Certificates Count](#1114-get-user-certificates-count)
     - 11.15 [Check VIMEO Status](#1115-check-vimeo-status)
+12. [Course Management](#course-management)
+    - 12.1 [Get LCMS Media](#121-get-lcms-media)
+    - 12.2 [Get File Format Size](#122-get-file-format-size)
+    - 12.3 [Get Media Count](#123-get-media-count)
+    - 12.4 [Upload SCORM Content](#124-upload-scorm-content)
       
 ## My Courses
 
@@ -1132,6 +1137,84 @@
 * **Response**: 
 ```json
 {"value":"No"}
+```
+
+## Course Management {#course-management}
+
+
+### 12.1 Get LCMS Media 
+* **Endpoint**: `POST /api/v1/LCMS/GetLCMSMedia`
+* **Payload**:
+```json
+{
+  "page": 1,
+  "pageSize": 18,
+  "search": "scorm",
+  "showAllData": "false"
+}
+```
+* **Response**:
+```json
+{
+  "data": [
+    {
+      "id": 16004,
+      "name": "Day 1_About_Max_12May_NOQus_2004",
+      "path": "/assets/courses/638826713822767440Day1_About_Max_12May_NOQus_2004/index_lms.html",
+      "contentType": "SCORM1.2",
+      "isMobileCompatible": true
+    }
+  ]
+}
+```
+
+### 12.2 Get File Format Size
+* **Endpoint**: `GET /api/v1/MasterPageSetting/GetFileFormatSize/ADDITIONAL_RESOURCE`
+* **Response**:
+```json
+{
+  "id": 28,
+  "name": "ADDITIONAL_RESOURCE",
+  "size": 51200
+}
+```
+
+### 12.3 Get Media Count
+* **Endpoint**: `GET /api/v1/LCMS/GetMediaCount/true`
+* **Response**: Returns integer count of media items
+
+
+### 12.4 Upload SCORM Content
+* **Endpoint**: `POST /api/v1/LCMS`
+* **Authentication**: Bearer Token
+* **Content-Type**: `multipart/form-data`
+* **Required Parameters**:
+
+| Field | Type | Description | Example |
+|-------|------|-------------|---------|
+| `name` | string | Course name | "History of Agra" |
+| `description` | string | Course description | "Journey of Agra to become a National Heritage site" |
+| `contentType` | string | MIME type of content | "application/x-zip-compressed" |
+| `version` | string | Content version | "1.0" |
+| `metaData` | string | Additional metadata | "Indian Historical place" |
+| `language` | string | Language code | "en" |
+| `scormType` | string | SCORM version | "SCORM1.2" |
+| `duration` | integer | Duration in minutes | 60 |
+| `isMobileCompatible` | boolean | Mobile compatibility | true |
+| `fileForUpload` | binary | ZIP file containing SCORM package | test.zip |
+
+* **Optional Parameters**:
+  - `youtubeVideoId`: (string) YouTube video ID if applicable
+  - `isBuiltInAssessment`: (boolean) Default false
+  - `isSecuredContent`: (boolean) Default false
+
+* **Success Response**:
+```json
+{
+  "success": true,
+  "id": 16005,
+  "path": "/assets/courses/638826713822767441History_Agra/index_lms.html"
+}
 ```
 
 
