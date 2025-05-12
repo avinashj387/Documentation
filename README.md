@@ -41,6 +41,7 @@
 9. [Competency](#competency)
     - 9.1 [Get Competency Hub Data](#91-get-competency-hub-data)
     - 9.2 [Get Competency Spider Chart](#92-get-competency-spider-chart)
+      
 10. [Calendar](#calendar)
     - 10.1 [Get Date Format](#101-get-date-format)
     - 10.2 [Get ILT Calendar Data](#102-get-ilt-calendar-data)
@@ -57,6 +58,24 @@
     - 10.13 [Get Nomination Data](#1013-get-nomination-data)
     - 10.14 [Get Nomination Count](#1014-get-nomination-count)
     - 10.15 [Get Training Attendance](#1015-get-training-attendance)
+      
+11. [Profile](#profile)
+    - 11.1 [Get Encrypted User ID](#111-get-encrypted-user-id)
+    - 11.2 [Get Profile Permissions](#112-get-profile-permissions)
+    - 11.3 [Get User Configurable Parameters](#113-get-user-configurable-parameters)
+    - 11.4 [Check Federation ID Status](#114-check-federation-id-status)
+    - 11.5 [Get User Profile](#115-get-user-profile)
+    - 11.6 [Get User Settings](#116-get-user-settings)
+    - 11.7 [Get Profile Picture](#117-get-profile-picture)
+    - 11.8 [Get User Details by ID](#118-get-user-details-by-id)
+    - 11.9 [Get Competency Status Report](#119-get-competency-status-report)
+    - 11.10 [Get Key Area Settings Count](#1110-get-key-area-settings-count)
+    - 11.11 [Get Key Area Settings](#1111-get-key-area-settings)
+    - 11.12 [Check External Certificate Status](#1112-check-external-certificate-status)
+    - 11.13 [Get User Certificates](#1113-get-user-certificates)
+    - 11.14 [Get User Certificates Count](#1114-get-user-certificates-count)
+    - 11.15 [Check VIMEO Status](#1115-check-vimeo-status)
+      
 ## My Courses
 
 ### 1. Get Paginated Courses
@@ -970,6 +989,149 @@
     "startDate": "2025-05-12T00:00:00"
   }
 ]
+```
+
+## Profile {#profile}
+
+### 11.1 Get Encrypted User ID {#111-get-encrypted-user-id}
+* **Endpoint**: `POST /api/v1/User/GetEncryptedUserId`
+* **Payload**: `{}`
+* **Response**:
+```json
+{"encryptedUserId":"fk2zuGnuQ/lJ2By+PLvNTg=="}
+```
+
+### 11.2 Get Profile Permissions {#112-get-profile-permissions}
+* **Endpoint**: `GET /api/v1/user/GetProfilePermission`
+* **Response**:
+```json
+[
+  {
+    "name": "Change Password",
+    "code": "ch_pass",
+    "isAccess": true
+  }
+]
+```
+
+### 11.3 Get User Configurable Parameters
+* **Endpoint**: `POST /api/v1/user/UserConfigurableParameter`
+* **Payload**:
+```json
+["HRBP_Rename","Mentor_Rename"]
+```
+* **Response**:
+```json
+[
+  {
+    "code": "HRBP_Rename",
+    "value": "HRBP"
+  }
+]
+```
+
+### 11.4 Check Federation ID Status 
+* **Endpoint**: `GET /api/v1/ConfigurableParameters/GetValue/Enable_FederationID`
+* **Response**: 
+```json
+{"value":"No"}
+```
+
+### 11.5 Get User Profile
+* **Endpoint**: `GET /api/v1/user/GetUserProfile`
+* **Response**:
+```json
+{
+  "userName": "LMS Admin",
+  "timeZone": "(UTC+05:30) Chennai...",
+  "profilePicture": ""
+}
+```
+
+### 11.6 Get User Settings
+* **Endpoint**: `GET /api/v1/user/UserSetting/1/25`
+* **Response**:
+```json
+[
+  {
+    "configuredColumnName": "Business",
+    "fieldType": "TYPEAHEAD"
+  }
+]
+```
+
+### 11.7 Get Profile Picture 
+* **Endpoint**: `POST /api/v1/User/GetProfilePicture`
+* **Payload**: `{"id":""}`
+
+### 11.8 Get User Details by ID 
+* **Endpoint**: `POST /api/v1/User/GetUserDetailsById`
+* **Payload**:
+```json
+{"id":"fk2zuGnuQ/lJ2By+PLvNTg=="}
+```
+* **Response**:
+```json
+{
+  "userName": "LMS Admin",
+  "profilePicture": "enth/638818232516312348.png"
+}
+```
+
+### 11.9 Get Competency Status Report
+* **Endpoint**: `POST /api/v1/Report/Competency/CompetencyStatusReport/Self`
+* **Payload**:
+```json
+{"Page":1,"PageSize":10}
+```
+* **Response**:
+```json
+{
+  "competencyCharts": [
+    {
+      "competencyName": "Collaboration",
+      "status": "Pending"
+    }
+  ]
+}
+```
+
+### 11.10 Get Key Area Settings Count 
+* **Endpoint**: `GET /api/v1/KeyAreaSetting/GetMyKeyAreaSettingCount/`
+* **Response**: `0`
+
+### 11.11 Get Key Area Settings
+* **Endpoint**: `GET /api/v1/KeyAreaSetting/GetMyKeyAreaSetting/1/10/`
+* **Response**: `[]`
+
+### 11.12 Check External Certificate Status 
+* **Endpoint**: `GET /api/v1/ConfigurableParameters/GetValue/ExternalCertificate`
+* **Response**: 
+```json
+{"value":"Yes"}
+```
+
+### 11.13 Get User Certificates
+* **Endpoint**: `GET /api/v1/CourseCertificateAssociation/GetUserCertificatesByUserId/1/10/null/null`
+* **Response**:
+```json
+[
+  {
+    "id": 4,
+    "category": null
+  }
+]
+```
+
+### 11.14 Get User Certificates Count
+* **Endpoint**: `GET /api/v1/CourseCertificateAssociation/GetUserCertificatesByUserIdCount/null/null`
+* **Response**: `4`
+
+### 11.15 Check VIMEO Status
+* **Endpoint**: `GET /api/v1/ConfigurableParameters/GetValue/VIMEO`
+* **Response**: 
+```json
+{"value":"No"}
 ```
 
 
