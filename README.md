@@ -2,11 +2,28 @@
 
 ## Table of Contents
 1. [My Courses](#my-courses)
+   - 1.1 [Get Paginated Courses](#1-get-paginated-courses)
+   - 1.2 [Get Course Module](#2-get-course-module)
+   - 1.3 [Get To-Do List](#3-get-to-do-list)
 2. [Leaderboard](#leaderboard)
+   - 2.1 [Get User Rankings](#4-get-user-rankings)
+   - 2.2 [Get Category Rankings](#5-get-category-rankings)
 3. [Explore](#explore)
+   - 3.1 [Get All Categories](#6-get-all-categories)
+   - 3.2 [Get Subcategories](#7-get-subcategories)
+   - 3.3 [Get Category Courses](#8-get-category-courses)
 4. [Knowledge Library](#knowledge-library)
+   - 4.1 [Get News Updates](#9-get-news-updates)
+   - 4.2 [Get Media Library](#10-get-media-library)
+   - 4.3 [Get Quiz Corner](#11-get-quiz-corner)
+   - 4.4 [Get Survey Corner](#12-get-survey-corner)
+   - 4.5 [Get Polls Corner](#14-get-polls-corner)
+   - 4.6 [Get Publications by Folder](#15-get-publications-by-folder)
+   - 4.7 [Get Social File](#16-get-social-file)
+   - 4.8 [Get Central Book Library Categories](#17-get-central-book-library-categories)
+   - 4.9 [Get Configurable Parameter Value - SHOW_POLICYLABEL](#18-get-configurable-parameter-value--show_policylabel)
+   - 4.10 [Get Policy Document](#19-get-policy-document)
 
----
 
 ## My Courses
 
