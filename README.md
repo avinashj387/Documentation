@@ -80,7 +80,8 @@
     - 12.2 [Get File Format Size](#122-get-file-format-size)
     - 12.3 [Get Media Count](#123-get-media-count)
     - 12.4 [Upload SCORM Content](#124-upload-scorm-content)
-      
+    - 12.5 [Upload PDF Content](#125-upload-pdf-content)
+
 ## My Courses
 
 ### 1. Get Paginated Courses
@@ -1208,14 +1209,33 @@
   - `isBuiltInAssessment`: (boolean) Default false
   - `isSecuredContent`: (boolean) Default false
 
-* **Success Response**:
-```json
-{
-  "success": true,
-  "id": 16005,
-  "path": "/assets/courses/638826713822767441History_Agra/index_lms.html"
-}
+* **Success Response**: 1
 ```
+
+### 12.5 Upload PDF Content {#125-upload-pdf-content}
+* **Endpoint**: `POST /api/v1/LCMS`
+* **Authentication**: Bearer Token
+* **Content-Type**: `multipart/form-data`
+* **Request Payload** (from image):
+
+| Field | Type | Required | Description | Example Value |
+|-------|------|----------|-------------|---------------|
+| `name` | string | Yes | Content name | "sahich" |
+| `description` | string | Yes | Content description | "how sahich become one of the top hotel industry" |
+| `contentType` | string | Yes | MIME type | "application/pdf" |
+| `version` | string | Yes | Version number | "1.0" |
+| `metaData` | string | No | Additional metadata | "sahich is star performer industry" |
+| `originalFileName` | string | Yes | Original filename | "UBI APIM Integration Document_LMSUnionVidya (1).pdf" |
+| `language` | string | Yes | Language code | "en" |
+| `duration` | integer | Yes | Duration in minutes | 60 |
+| `isBuiltInAssessment` | boolean | Yes | Enable assessments | true |
+| `isMobileCompatible` | boolean | Yes | Mobile support | true |
+| `ismodulecreate` | boolean | Yes | Create as module | true |
+| `issecuredcontent` | boolean | Yes | Content protection | false |
+| `fileForUpload` | binary | Yes | PDF file | (binary data) |
+
+* **Success Response**:   1
+                     
 
 
 
