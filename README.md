@@ -1236,7 +1236,7 @@
 
 ## Module Management
 
-### 13.1 Get Module Data {#131-get-module-data}
+### 13.1 Get Module Data
 * **Endpoint**: `POST /api/v1/module/GetModuleData`
 * **Authentication**: Bearer Token
 * **Payload**:
