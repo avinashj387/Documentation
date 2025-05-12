@@ -33,11 +33,11 @@
    - 7.2 [Get Social File](#16-get-social-file)
    - 7.3 [Get Policy Document](#19-get-policy-document)
 8. [Catalog](#catalog)
-   - 8.1 [Get My Courses](#91-get-my-courses)
-   - 8.2 [Get Course Count](#92-get-course-count)
-   - 8.3 [Get Selected Languages](#93-get-selected-languages)
-   - 8.4 [Get Course Enrollment Config](#94-get-course-enrollment-config)
-   - 8.5 [Get All Categories](#95-get-all-categories)
+   - 8.1 [Get My Courses](#81-get-my-courses)
+   - 8.2 [Get Course Count](#82-get-course-count)
+   - 8.3 [Get Selected Languages](#83-get-selected-languages)
+   - 8.4 [Get Course Enrollment Config](#84-get-course-enrollment-config)
+   - 8.5 [Get All Categories](#85-get-all-categories)
 
 ## My Courses
 
