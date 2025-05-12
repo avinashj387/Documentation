@@ -81,6 +81,10 @@
     - 12.3 [Get Media Count](#123-get-media-count)
     - 12.4 [Upload SCORM Content](#124-upload-scorm-content)
     - 12.5 [Upload PDF Content](#125-upload-pdf-content)
+13. [Module Management](#module-management)
+    - 13.1 [Get Module Data](#131-get-module-data)
+    - 13.2 [Get Media Count](#132-get-media-count)
+    - 13.3 [Search LCMS Media](#133-search-lcms-media)
 
 ## My Courses
 
@@ -1227,6 +1231,84 @@
 | `language` | string | Yes | 2-letter language code | "en" |
 | `duration` | integer | Yes | Duration in minutes | 60 |
 | `fileForUpload` | binary | Yes | PDF file content | - |
+
+
+
+## Module Management {#module-management}
+
+### 13.1 Get Module Data {#131-get-module-data}
+* **Endpoint**: `POST /api/v1/module/GetModuleData`
+* **Authentication**: Bearer Token
+* **Payload**:
+```json
+{
+  "page": 1,
+  "pageSize": 10,
+  "showAllData": "false"
+}
+```
+* **Response**:
+```json
+{
+  "data": [
+    {
+      "id": 18498,
+      "name": "sahich",
+      "moduleType": "Document",
+      "description": "sahich",
+      "isActive": true,
+      "createdBy": 2549,
+      "userName": "LMS Admin"
+    }
+  ]
+}
+```
+
+### 13.2 Get Media Count {#132-get-media-count}
+* **Endpoint**: `GET /api/v1/LCMS/GetMediaCount/true`
+* **Authentication**: Bearer Token
+* **Response**:
+```json
+{
+  "data": [
+    {
+      "id": 16004,
+      "name": "Day 1_About_Max_12May_NOQus_2004",
+      "contentType": "SCORM1.2",
+      "isMobileCompatible": true,
+      "duration": 60.0
+    }
+  ]
+}
+```
+
+### 13.3 Search LCMS Media {#133-search-lcms-media}
+* **Endpoint**: `POST /api/v1/LCMS/GetLCMSMedia`
+* **Authentication**: Bearer Token
+* **Payload**:
+```json
+{
+  "page": 1,
+  "pageSize": 12,
+  "search": "scorm",
+  "showAllData": "false"
+}
+```
+* **Response**:
+```json
+{
+  "data": [
+    {
+      "id": 16004,
+      "name": "Day 1_About_Max_12May_NOQus_2004",
+      "path": "/assets/courses/.../index_lms.html",
+      "contentType": "SCORM1.2",
+      "duration": 60.0,
+      "language": "en"
+    }
+  ]
+}
+```
 
 
 
