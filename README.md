@@ -81,6 +81,15 @@
     - 12.3 [Get Media Count](#123-get-media-count)
     - 12.4 [Upload SCORM Content](#124-upload-scorm-content)
     - 12.5 [Upload PDF Content](#125-upload-pdf-content)
+    - 12.6 [Content Size Limits](#126-content-size-limits)
+    - 12.7 [H5P Content](#127-h5p-content)
+    - 12.8 [Video Content](#128-video-content)
+    - 12.9 [Survey Content](#129-survey-content)
+    - 12.10 [Audio/Podcast](#1210-audiopodcast)
+    - 12.11 [YouTube Integration](#1211-youtube-integration)
+    - 12.12 [External Links](#1212-external-links)
+    - 12.13 [Assignments](#1213-assignments)
+
 13. [Module Management](#module-management)
     - 13.1 [Get Module Data](#131-get-module-data)
     - 13.2 [Get Media Count](#132-get-media-count)
@@ -1233,6 +1242,114 @@
 | `duration` | integer | Yes | Duration in minutes | 60 |
 | `fileForUpload` | binary | Yes | PDF file content | - |
 
+
+### 12.6 Content Size Limits {#126-content-size-limits}
+* **Endpoint**: `GET /api/v1/MasterPageSetting/GetFileFormatSize/{type}`
+* **Supported Types**:
+  | Content Type       | Max Size | Example Response |
+  |--------------------|----------|------------------|
+  | `NON_SCORM`        | 1.5GB    | `{"id":8,"size":1572864}` |
+  | `H5P`              | 500MB    | `{"id":9,"size":512000}` |
+  | `VIDEO`            | 400MB    | `{"id":11,"size":409600}` |
+  | `PODCAST`          | 3MB      | `{"id":12,"size":3072}` |
+  | `ADDITIONAL_RESOURCE` | 50MB | `{"id":28,"size":51200}` |
+
+### 12.7 H5P Content {#127-h5p-content}
+* **Endpoint**: `POST /api/v1/LCMS/GetLCMSMedia`
+* **Payload**:
+```json
+{"page":1,"pageSize":18,"search":"h5p"}
+```
+* **Response**:
+```json
+{
+  "data": [{
+    "id": 13577,
+    "name": "H5P Module",
+    "path": "/assets/h5pcourses/...",
+    "contentType": "h5p"
+  }]
+}
+```
+
+### 12.8 Video Content {#128-video-content}
+* **Endpoint**: `POST /api/v1/LCMS/GetLCMSMedia`
+* **Vimeo Status Check**:
+  ```bash
+  GET /api/v1/ConfigurableParameters/GetValue/VIMEO
+  ```
+  ```json
+  {"value":"No"}
+  ```
+
+### 12.9 Survey Content {#129-survey-content}
+* **Get Surveys**:
+  ```bash
+  GET /api/v1/LCMS/GetMedia/1/10/survey
+  ```
+* **Total Records**:
+  ```bash
+  GET /api/v1/SurveyManagement/SurveyQuestion/GetTotalRecords
+  ```
+  ```json
+  173
+  ```
+
+### 12.10 Audio/Podcast {#1210-audiopodcast}
+* **Endpoint**: `POST /api/v1/LCMS/GetLCMSMedia`
+* **Payload**:
+```json
+{"search":"audio"}
+```
+* **Response**:
+```json
+{
+  "data": [{
+    "path": "https://.../audio.wav",
+    "contentType": "audio"
+  }]
+}
+```
+
+### 12.11 YouTube Integration {#1211-youtube-integration}
+* **Endpoint**: `POST /api/v1/LCMS/GetLCMSMedia`
+* **Response**:
+```json
+{
+  "data": [{
+    "youtubeVideoId": "YIhtkEjFOG8",
+    "contentType": "youtube"
+  }]
+}
+```
+
+### 12.12 External Links {#1212-external-links}
+* **Endpoint**: `POST /api/v1/LCMS/GetLCMSMedia`
+* **Response**:
+```json
+{
+  "data": [{
+    "path": "https://example.com/faq",
+    "contentType": "externallink"
+  }]
+}
+```
+
+### 12.13 Assignments {#1213-assignments}
+* **Endpoint**: `POST /api/v1/LCMS/GetLCMSMedia`
+* **Payload**:
+```json
+{"search":"assignment"}
+```
+* **Response**:
+```json
+{
+  "data": [{
+    "name": "Test Assignment",
+    "contentType": "assignment"
+  }]
+}
+```
 
 
 ## Module Management
