@@ -1814,7 +1814,7 @@ POST /api/v1/courses/20214
 }
 ```
 
-##14 Assessment Attempt Management
+## 14. Assessment Attempt Management
 
 
 ### 1. Get All Assessment Attempts
