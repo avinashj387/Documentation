@@ -121,6 +121,13 @@
 * [14.6 Upload Attempt File](#6-upload-attempt-file)
 * [14.7 Download Template File](#7-download-template-file)
 * [14.8 Save Uploaded File Data](#8-save-uploaded-file-data)
+15. [MicroLearning](#15-microlearning)
+- [15.1 Get MicroLearning List](#1-get-microlearning-list-paginated)
+- [15.2 Get MicroLearning Count](#2-get-microlearning-count)
+- [15.3 Create MicroLearning Module](#3-create-microlearning-module)
+- [15.4 Get MicroLearning Details by ID](#4-get-microlearning-details-by-id)
+- [15.5 Get Page Number for MicroLearning](#5-get-page-number-for-microlearning)
+
 
 ## My Courses
 
@@ -2001,6 +2008,134 @@ POST /api/v1/AssessmentAttemptManagement/SaveFileData
 ```
 
 ---
+
+
+
+## 15 MicroLearning
+
+
+### 1. Get MicroLearning List (Paginated)
+
+**Endpoint:**
+
+```
+GET /api/v1/AuthoringMaster/{page}/{pageSize}
+```
+
+**Example:**
+
+```
+GET /api/v1/AuthoringMaster/1/10
+```
+
+**Response (trimmed):**
+
+```json
+[
+  {
+    "id": 1286,
+    "name": "HONASA",
+    "skills": "HONASA",
+    "description": "HONASA",
+    "duration": 25.0,
+    "moduleType": "PPTUpload"
+  }
+]
+```
+
+---
+
+### 2. Get MicroLearning Count
+
+**Endpoint:**
+
+```
+GET /api/v1/AuthoringMaster/count
+```
+
+**Response:**
+
+```json
+231
+```
+
+---
+
+### 3. Create MicroLearning Module
+
+**Endpoint:**
+
+```
+POST /api/v1/AuthoringMaster
+```
+
+**Payload:**
+
+```json
+{
+  "name": "TESTING",
+  "skills": "TESTING API",
+  "duration": 60,
+  "description": "TESTING PURPOSE",
+  "lcmsId": 0,
+  "isDeleted": false,
+  "moduleType": "Microlearning",
+  "metaData": "TESTING PURPOSE"
+}
+```
+
+**Response:**
+
+```json
+1287
+```
+
+---
+
+### 4. Get MicroLearning Details by ID
+
+**Endpoint:**
+
+```
+GET /api/v1/AuthoringMaster/GetDetailsByAuthoringId/{authoringId}/{page}/{pageSize}/{type}
+```
+
+**Example:**
+
+```
+GET /api/v1/AuthoringMaster/GetDetailsByAuthoringId/1287/1/10/0
+```
+
+**Response:**
+
+```json
+[]
+```
+
+---
+
+### 5. Get Page Number for MicroLearning
+
+**Endpoint:**
+
+```
+GET /api/v1/AuthoringMaster/GetPageNumber/{authoringId}
+```
+
+**Example:**
+
+```
+GET /api/v1/AuthoringMaster/GetPageNumber/1287
+```
+
+**Response:**
+
+```json
+0
+```
+
+---
+
 
 
 
