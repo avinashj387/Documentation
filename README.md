@@ -179,8 +179,13 @@
     - 21.5 [Job Description Management](#215-job-description-management)
     - 21.6 [Competency Import/Export](#216-competency-importexport)
 
-22. [Internal Trainers Schedule Report](#22-internal-trainers-schedule-report)
-    - 22.1 [Search for Internal Trainers](#221-search-for-internal-trainers)
+22. [Competencies Master](#22-competencies-master)
+    - 22.1 [Check Subcategory Configuration](#221-check-subcategory-configuration)
+    - 22.2 [Get Competencies (Paginated)](#222-get-competencies-paginated)
+    - 22.3 [Get All Competency Categories](#223-get-all-competency-categories)
+    - 22.4 [Create New Competency](#224-create-new-competency)
+    - 22.5 [Get Competency Subcategories](#225-get-competency-subcategories)
+
 
 ## My Courses
 
@@ -3171,6 +3176,91 @@ POST /api/v1/ILTReport/ExportGetInternalTrainersScheduleReport
 - **Endpoint**: `GET /api/v1/CompetencyFramework/ExportSample`
 
 ---
+
+
+## 22. Competencies Master
+
+### 22.1 Check Subcategory Configuration
+- **Endpoint**: `GET /api/v1/ConfigurableParameters/GetValue/COMP_SUBCATEGORY`  
+- **Response**:  
+```json
+{"value":"Yes"}
+```
+
+### 22.2 Get Competencies (Paginated)
+- **Endpoint**: `GET /api/v1/CompetenciesMaster/{page}/{pageSize}`  
+- **Example**:  
+```bash
+GET /api/v1/CompetenciesMaster/1/10/
+```
+- **Response**:  
+```json
+{
+  "data": {
+    "records": [
+      {
+        "id": 706,
+        "competencyName": "AMS Basic",
+        "category": "WNS Leadership",
+        "competencyDescription": "AMS Basic",
+        "categoryId": 117
+      }
+    ]
+  }
+}
+```
+
+### 22.3 Get All Competency Categories
+- **Endpoint**: `GET /api/v1/CompetencyCategory`  
+- **Response**:  
+```json
+[
+  {
+    "id": 1,
+    "categoryName": "Manager",
+    "category": "Managerial Abilities"
+  }
+]
+```
+
+### 22.4 Create New Competency
+- **Endpoint**: `POST /api/v1/CompetenciesMaster`  
+- **Payload**:  
+```json
+{
+  "category": "Managerial Abilities",
+  "categoryId": 1,
+  "competencyName": "testing",
+  "competencyDescription": "testing"
+}
+```
+- **Response**: Returns created competency ID
+
+### 22.5 Get Competency Subcategories
+- **Endpoint**: `GET /api/v1/c/CompetencySubCategory/get/{page}/{pageSize}/{categoryId}`  
+- **Example**:  
+```bash
+GET /api/v1/c/CompetencySubCategory/get/1/100000/66
+```
+- **Empty Response**:  
+```json
+{
+  "statusCode": 204,
+  "message": "No Records Found"
+}
+```
+
+### Implementation Notes:
+1. **Pagination**: Default `pageSize` is 10, max is 1000
+2. **Error Handling**:
+   - `204 No Content` when no subcategories exist
+   - `400 Bad Request` for invalid category IDs
+3. **Dependencies**:
+   - Requires `COMP_SUBCATEGORY` enabled for subcategory operations
+4. **Field Requirements**:
+   - `competencyName`: Max 100 chars
+   - `competencyDescription`: Max 500 chars
+
 
 
 
