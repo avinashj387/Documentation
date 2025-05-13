@@ -156,6 +156,20 @@
 - [19.10 Get Category-wise Report Graph](#10-get-category-wise-report-graph)
 - [19.11 Get Deployed vs Completed Assessment Report Export](#11-get-deployed-vs-completed-assessment-report-export)
 - [19.12 Get Deployed vs Completed Assessment Graph](#12-get-deployed-vs-completed-assessment-graph)
+
+ 20. [ILT and Attendance Reports](#20-ilt-and-attendance-reports)
+- [20.1 ILT Completion Report](#1-ilt-completion-report)
+- [20.2 ILT Consolidated Report](#2-ilt-consolidated-report)
+- [20.3 Learning Report (Search by Course)](#3-learning-report-search-by-course-name)
+- [20.4 Export Learning Report](#4-export-learning-report-wns-report)
+- [20.5 Export Schedule-wise Attendance Report](#5-export-schedule-wise-attendance-report)
+- [20.6 Get Schedule-wise Attendance Report](#6-get-schedule-wise-attendance-report)
+- [20.7 Get Schedule-wise Attendance Report Count](#7-get-schedule-wise-attendance-report-count)
+- [20.8 Export Attendance Summary Report](#8-export-attendance-summary-report)
+- [20.9 Get Attendance Summary Report](#9-get-attendance-summary-report)
+- [20.10 Get Attendance Summary Report Count](#10-get-attendance-summary-report-count)
+
+
 ## My Courses
 
 ### 1. Get Paginated Courses
@@ -2721,7 +2735,188 @@ POST /api/v1/AnalyticalDashboard/DeployAssessGraph
 ]
 ```
 
+
+## 20 ILT Reports
+
+
+### 1. ILT Completion Report
+
+**Endpoint:**
+
+```
+POST /api/v1/ILTReport/ExportILTCompletionReport
+```
+
+**Payload:**
+
+```json
+{
+  "startDate": "2018-02-01T16:26:34",
+  "endDate": "2025-05-13T16:26:34",
+  "ExportAs": "xlsx"
+}
+```
+
 ---
+
+### 2. ILT Consolidated Report
+
+**Endpoint:**
+
+```
+POST /api/v1/ILTReport/ILTConsolidatedReport
+```
+
+**Payload:**
+
+```json
+{
+  "id": 54,
+  "page": 1,
+  "pagesize": 10,
+  "fromDate": null,
+  "toDate": null,
+  "userStatus": null
+}
+```
+
+---
+
+### 3. Learning Report (Search by Course Name)
+
+**Endpoint:**
+
+```
+GET /api/v1/Courses/TypeAheadReport/{courseTitle}
+```
+
+**Example:**
+
+```
+GET /api/v1/Courses/TypeAheadReport/Testing%20by%20TTSH
+```
+
+---
+
+### 4. Export Learning Report (WNS Report)
+
+**Endpoint:**
+
+```
+POST /api/v1/WNSReport/ExportLaLearningReport
+```
+
+**Payload:**
+
+```json
+{
+  "StartDate": "2020-02-01T00:00:00",
+  "EndDate": "2025-05-02T00:00:00",
+  "academy": 68,
+  "courseId": [54, 107],
+  "coursetype": "Classroom",
+  "ExportAs": "xlsx"
+}
+```
+
+---
+
+### 5. Export Schedule-wise Attendance Report
+
+**Endpoint:**
+
+```
+POST /api/v1/ILTReport/ExportScheduleWiseAttendanceReport
+```
+
+**Payload:**
+
+```json
+{
+  "courseId": 19786,
+  "moduleId": 19763,
+  "userId": 3573,
+  "scheduleId": 2237,
+  "fromDate": "2019-01-01T00:00:00.000Z",
+  "toDate": "2025-05-01T00:00:00.000Z",
+  "pageSize": 10,
+  "ExportAs": "xlsx"
+}
+```
+
+---
+
+### 6. Get Schedule-wise Attendance Report
+
+**Endpoint:**
+
+```
+POST /api/v1/ILTReport/GetScheduleWiseAttendanceReport
+```
+
+**Same payload as above**
+
+---
+
+### 7. Get Schedule-wise Attendance Report Count
+
+**Endpoint:**
+
+```
+POST /api/v1/ILTReport/GetScheduleWiseAttendenceReport/count
+```
+
+**Same payload as above**
+
+---
+
+### 8. Export Attendance Summary Report
+
+**Endpoint:**
+
+```
+POST /api/v1/Report/ExportAttendenceSummuryReport
+```
+
+**Payload:**
+
+```json
+{
+  "courseId": 2264,
+  "moduleId": 2404,
+  "fromDate": "2018-01-01T00:00:00",
+  "toDate": "2025-05-01T00:00:00",
+  "startIndex": 1,
+  "pageSize": 10
+}
+```
+
+---
+
+### 9. Get Attendance Summary Report
+
+**Endpoint:**
+
+```
+POST /api/v1/Report/GetAttendenceSummuryReport
+```
+
+**Same payload as above**
+
+---
+
+### 10. Get Attendance Summary Report Count
+
+**Endpoint:**
+
+```
+POST /api/v1/Report/GetAttendenceSummuryReportCount
+```
+
+**Same payload as above**
+
+---
+
 
 
 
