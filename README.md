@@ -110,6 +110,17 @@
     - 13.1 [Get Module Data](#131-get-module-data)
     - 13.2 [Get Media Count](#132-get-media-count)
     - 13.3 [Search LCMS Media](#133-search-lcms-media)
+      
+14. [Assessment Attempt Management](#14-assessment-attempt-management)
+
+* [14.1 Get All Assessment Attempts](#1-get-all-assessment-attempts)
+* [14.2 Get Assessment Attempt Count](#2-get-assessment-attempt-count)
+* [14.3 Get Modules for Assessment Course](#3-get-modules-for-assessment-course)
+* [14.4 Search Active or Inactive User](#4-search-active-or-inactive-user)
+* [14.5 Add Assessment Attempt](#5-add-assessment-attempt)
+* [14.6 Upload Attempt File](#6-upload-attempt-file)
+* [14.7 Download Template File](#7-download-template-file)
+* [14.8 Save Uploaded File Data](#8-save-uploaded-file-data)
 
 ## My Courses
 
@@ -1802,6 +1813,194 @@ POST /api/v1/courses/20214
   ]
 }
 ```
+
+##14 Assessment Attempt Management
+
+
+### 1. Get All Assessment Attempts
+
+**Endpoint:**
+
+```
+GET /api/v1/AssessmentAttemptManagement/{page}/{pageSize}
+```
+
+**Example:**
+
+```
+GET /api/v1/AssessmentAttemptManagement/1/10
+```
+
+**Response (trimmed):**
+
+```json
+[
+  {
+    "id": 1042,
+    "courseId": 18782,
+    "courseName": "Assessment iLearn",
+    "userName": "Danish Hussain",
+    "additionalAttempts": 2,
+    "isExhausted": false
+  }
+]
+```
+
+---
+
+### 2. Get Assessment Attempt Count
+
+**Endpoint:**
+
+```
+GET /api/v1/AssessmentAttemptManagement/Count
+```
+
+**Response:**
+
+```json
+43
+```
+
+---
+
+### 3. Get Modules for Assessment Course
+
+**Endpoint:**
+
+```
+GET /api/v1/Module/GetModulesForAssessmentCourses/{courseId}
+```
+
+**Example:**
+
+```
+GET /api/v1/Module/GetModulesForAssessmentCourses/20177
+```
+
+**Response (trimmed):**
+
+```json
+[
+  { "id": 18434, "title": "EFS PPT Testing" },
+  { "id": 18436, "title": "EFS PPT Testing 2" }
+]
+```
+
+---
+
+### 4. Search Active or Inactive User
+
+**Endpoint:**
+
+```
+POST /api/v1/user/searchActiveInActiveUser
+```
+
+**Payload:**
+
+```json
+{
+  "userId": "aX0NGaBB7+oaZe8Bv7m2yQ==",
+  "userType": "Z5pxA9AnsHK8ffqkKF9c9Q=="
+}
+```
+
+**Response (trimmed):**
+
+```json
+[
+  {
+    "name": "LMS Admin",
+    "userType": "Internal",
+    "isDeleted": false
+  }
+]
+```
+
+---
+
+### 5. Add Assessment Attempt
+
+**Endpoint:**
+
+```
+POST /api/v1/AssessmentAttemptManagement
+```
+
+**Payload:**
+
+```json
+{
+  "id": 0,
+  "courseId": 20177,
+  "courseName": "test assessment 0101",
+  "userId": 2549,
+  "userName": "LMS Admin",
+  "additionalAttempts": 10,
+  "ModuleId": 18434
+}
+```
+
+---
+
+### 6. Upload Attempt File
+
+**Endpoint:**
+
+```
+POST /api/v1/AssessmentAttemptManagement/PostFileUpload
+```
+
+**Payload:** File upload (example: LearnerCalendarData.xlsx)
+
+**Response:**
+
+```json
+"/enth/4.5/xlsx/638827453663167559.xlsx"
+```
+
+---
+
+### 7. Download Template File
+
+**Endpoint:**
+
+```
+GET /api/v1/AssessmentAttemptManagement/DownloadFile
+```
+
+---
+
+### 8. Save Uploaded File Data
+
+**Endpoint:**
+
+```
+POST /api/v1/AssessmentAttemptManagement/SaveFileData
+```
+
+**Payload:**
+
+```json
+{
+  "Path": "/enth/4.5/xlsx/638827453959710171.xlsx"
+}
+```
+
+**Response (trimmed):**
+
+```json
+[
+  {
+    "courseCode": "3742",
+    "courseName": "VILT Type Course",
+    "errMessage": "UserId not found. Please enter valid data."
+  }
+]
+```
+
+---
 
 
 
