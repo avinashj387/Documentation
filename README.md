@@ -84,6 +84,8 @@
     - 11.13 [Get User Certificates](#1113-get-user-certificates)
     - 11.14 [Get User Certificates Count](#1114-get-user-certificates-count)
     - 11.15 [Check VIMEO Status](#1115-check-vimeo-status)
+    -  [11.16 Upload Profile Picture](#1116-upload-profile-picture)
+    -  [11.17 Get Profile Picture Size Limit](#1117-get-profile-picture-size-limit)
 12. [Course Management](#course-management)
     - 12.1 [Get LCMS Media](#121-get-lcms-media)
     - 12.2 [Get File Format Size](#122-get-file-format-size)
@@ -1264,6 +1266,32 @@ GET /api/v1/c/SubSubCategory/count
 ```json
 {"value":"No"}
 ```
+
+### 11.16 Upload Profile Picture
+* **Endpoint**: `POST /api/v1/user/ProfilePictureUpload`
+* **Authentication**: Bearer Token
+* **Content-Type**: `application/json`
+* **Payload**:
+```json
+{
+  "base64String": "data:image/png;base64,iVBORw0KGgo...",
+  "customerName": null,
+  "url": null
+}
+```
+
+### 11.17 Get Profile Picture Size Limit
+* **Endpoint**: `GET /api/v1/MasterPageSetting/GetFileFormatSize/USER_PROFILE`
+* **Response**:
+```json
+{
+  "id": 2,
+  "name": "USER_PROFILE",
+  "size": 3072
+}
+```
+
+
 
 ## Course Management 
 
