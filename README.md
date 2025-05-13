@@ -171,7 +171,16 @@
  [Internal Trainers Schedule Report](#21-internal-trainers-schedule-report)
 - [20.11 Search for Internal Trainers](#1-search-for-internal-trainers)
 - [20.12 Export Internal Trainers Schedule Report](#2-export-internal-trainers-schedule-report)
+21. [Performance & Competency Management](#21-performance--competency-management)
+    - 21.1 [Job Profiles Management](#211-job-profiles-management)
+    - 21.2 [Career Roadmap Management](#212-career-roadmap-management)
+    - 21.3 [Competencies Dictionary](#213-competencies-dictionary)
+    - 21.4 [Competency Review Parameters](#214-competency-review-parameters)
+    - 21.5 [Job Description Management](#215-job-description-management)
+    - 21.6 [Competency Import/Export](#216-competency-importexport)
 
+22. [Internal Trainers Schedule Report](#22-internal-trainers-schedule-report)
+    - 22.1 [Search for Internal Trainers](#221-search-for-internal-trainers)
 
 ## My Courses
 
@@ -2966,6 +2975,202 @@ POST /api/v1/ILTReport/ExportGetInternalTrainersScheduleReport
   "ExportAs": "xlsx"
 }
 ```
+
+## 21. Performance & Competency Management
+
+### 21.1 Job Profiles Management
+#### Get Paginated Job Roles
+- **Endpoint**: `POST /api/v1/JobRolesInformation/PaginationData`
+- **Authentication**: Bearer Token
+- **Payload**:
+```json
+{"page":1, "pageSize":10, "search":null}
+```
+- **Response**:
+```json
+{
+  "data": [
+    {
+      "id": 51,
+      "jobRoleTitle": "Software Developer",
+      "isActive": true
+    }
+  ],
+  "totalRecords": 15
+}
+```
+
+#### Check Implementation Scope
+- **Endpoint**: `GET /api/v1/ImplementationScope`
+- **Query Params**:
+  - `subcategoryEnabled=true`
+  - `subsetEnabled=true`
+  - `levelEnabled=true`
+
+---
+
+### 21.2 Career Roadmap Management
+#### Create Career Roadmap
+- **Endpoint**: `POST /api/v1/CareerRoadmap`
+- **Payload**:
+```json
+{
+  "name": "testing",
+  "description": "testing",
+  "isActive": true,
+  "phases": [
+    {
+      "jobRoleId": 51,
+      "jobRoleTitle": "Software Developer",
+      "jobRoleParameters": [
+        {
+          "mappedAttribute": "Business",
+          "attributeValueName": "development"
+        }
+      ],
+      "averageDurationInMonths": 6
+    }
+  ]
+}
+```
+
+#### Get Career Roadmaps (Paginated)
+- **Endpoint**: `GET /api/v1/CareerRoadmap/{page}/{pageSize}`
+- **Response**:
+```json
+{
+  "data": [
+    {
+      "id": 3,
+      "name": "testing",
+      "totalPhases": 1,
+      "totalDurationInMonths": 6
+    }
+  ]
+}
+```
+
+#### Get Roadmap Phases
+- **Endpoint**: `GET /api/v1/CareerRoadmap/GetPhasesUnderRoadmap/{roadmapId}`
+- **Response**:
+```json
+[
+  {
+    "id": 5,
+    "jobRoleTitle": "Software Developer",
+    "jobRoleParameters": [
+      {
+        "mappedAttribute": "Business",
+        "attributeValueName": "development"
+      }
+    ]
+  }
+]
+```
+
+---
+
+### 21.3 Competencies Dictionary
+#### Get All Competency Categories
+- **Endpoint**: `GET /api/v1/CompetencyCategory`
+- **Response**:
+```json
+[
+  {
+    "id": 1,
+    "categoryName": "Manager",
+    "category": "Managerial Abilities"
+  }
+]
+```
+
+#### Create Competency Category
+- **Endpoint**: `POST /api/v1/CompetencyFramework/CreateCategory`
+- **Payload**:
+```json
+{"name": "Aarti Competency test"}
+```
+
+#### Create Competency Subcategory
+- **Endpoint**: `POST /api/v1/CompetencyFramework/CreateSubcategory`
+- **Payload**:
+```json
+{"name": "Communication Skills", "categoryId": 196}
+```
+
+#### Get Subcategories with Counts
+- **Endpoint**: `GET /api/v1/CompetencyFramework/GetSubcategoriesWithSubsetCount/{categoryId}`
+- **Response**:
+```json
+[
+  {
+    "subcategory": {
+      "id": 52,
+      "subcategoryDescription": "Communication Skills"
+    },
+    "subsetCount": 0
+  }
+]
+```
+
+---
+
+### 21.4 Competency Review Parameters
+#### Add Review Parameter
+- **Endpoint**: `POST /api/v1/c/CompetencyReviewParameters`
+- **Payload**:
+```json
+{
+  "CompetencyId": 69,
+  "JobRoleId": 13,
+  "ReviewParameter": "Conflict resolution"
+}
+```
+
+#### Get Review Parameters
+- **Endpoint**: `POST /api/v1/c/CompetencyReviewParameters/getAllCompetencyReviewParameters`
+- **Payload**:
+```json
+{"Page":1, "PageSize":10, "FilterName":null}
+```
+
+---
+
+### 21.5 Job Description Management
+#### Upload JD File
+- **Endpoint**: `POST /api/v1/JobRole/PostFileUpload`
+- **Content-Type**: `multipart/form-data`
+- **Parameters**:
+  - `fileForUpload`: JD file (PDF/DOCX)
+  - `jobRoleId`: 51
+
+#### Get All JDs
+- **Endpoint**: `POST /api/v1/JobRole/GetAllJdUpload`
+- **Payload**:
+```json
+{"page":1, "pageSize":10, "columnName":"name", "search":null}
+```
+
+#### Get JD Count
+- **Endpoint**: `GET /api/v1/JobRole/GetAllJdCount`
+
+---
+
+### 21.6 Competency Import/Export
+#### Export Competency Data
+- **Endpoint**: `GET /api/v1/CompetencyCategory/Export`
+
+#### Import Competency Data
+- **Endpoint**: `POST /api/v1/CompetencyCategory/PostFileUpload`
+- **Parameters**:
+  - `fileForUpload`: Excel file
+  - `CustomerCode`: Your org code
+  - `FileType`: "xlsx"
+
+#### Download Sample Template
+- **Endpoint**: `GET /api/v1/CompetencyFramework/ExportSample`
+
+---
 
 
 
