@@ -41,6 +41,7 @@
    - 8.6 [Subset of Subcategories](#subset-of-subcategories)
 
 
+
       * [1. Get All Categories](#1get-all-categories)
       * [2. Get Subcategories by Category](#2get-subcategories-by-category)
       * [3. Create a SubSubCategory (Subset)](#3create-a-subsubcategory-subset)
@@ -100,6 +101,7 @@
     - 12.11 [YouTube Integration](#1211-youtube-integration)
     - 12.12 [External Links](#1212-external-links)
     - 12.13 [Assignments](#1213-assignments)
+   - [Edit Course](#edit-course)
 
 13. [Module Management](#module-management)
     - 13.1 [Get Module Data](#131-get-module-data)
@@ -1489,6 +1491,237 @@ GET /api/v1/c/SubSubCategory/count
   }]
 }
 ```
+
+## Edit Course
+
+### 1. Get Course Details for Editing
+
+**Endpoint:**
+
+```
+GET /api/v1/courses/GetCourseDetailsForUpdate/{courseId}
+```
+
+**Example:**
+
+```
+GET /api/v1/courses/GetCourseDetailsForUpdate/20213
+```
+
+**Response (trimmed):**
+
+```json
+{
+  "id": 20213,
+  "code": "8130",
+  "title": "Day1_About_Max_noGUI",
+  "courseType": "elearning",
+  "courseAdminID": 2549,
+  "isCertificateIssued": false,
+  "completionPeriodDays": 0
+}
+```
+
+---
+
+### 2. Get Course Competency Skills
+
+**Endpoint:**
+
+```
+GET /api/v1/courses/GetCompetencySkillByCourseId/{courseId}
+```
+
+---
+
+### 3. Get Course SubSubCategory
+
+**Endpoint:**
+
+```
+GET /api/v1/courses/GetSubSubCategoryByCourseId/{courseId}
+```
+
+---
+
+###  4. Check Refresher Config
+
+**Endpoint:**
+
+```
+GET /api/v1/ConfigurableParameters/GetValue/REFRESHER
+```
+
+---
+
+### 5. Get Course Categories
+
+**Endpoint:**
+
+```
+GET /api/v1/Category
+```
+
+---
+
+### 6. Get Linked Course Modules
+
+**Endpoint:**
+
+```
+GET /api/v1/courses/GetCoursesModules/{courseId}
+```
+
+**Response (trimmed):**
+
+```json
+[
+  {
+    "id": 24314,
+    "moduleId": 18503,
+    "isAssessment": false
+  }
+]
+```
+
+---
+
+### 7. Get Course Assessments & Feedback Names
+
+**Endpoint:**
+
+```
+GET /api/v1/Courses/GetCoursesAssessmentFeedbackName/null/null/null/null/null/null
+```
+
+**Response (trimmed):**
+
+```json
+{
+  "assessmentName": null,
+  "feedbackName": null
+}
+```
+
+---
+
+### 8. Get Section by Course Code
+
+**Endpoint:**
+
+```
+GET /api/v1/section/{courseCode}
+```
+
+---
+
+### 9. Check EdCast Enabled
+
+**Endpoint:**
+
+```
+GET /api/v1/ConfigurableParameters/GetValue/Enable_Edcast
+```
+
+**Response:**
+
+```json
+{ "value": "No" }
+```
+
+---
+
+### 10. Get Vendor Details
+
+**Endpoint:**
+
+```
+POST /api/v1/courses/GetCourseVendorDetails
+```
+
+**Payload:**
+
+```json
+{ "Vendor_Type": "Internal" }
+```
+
+**Response (trimmed):**
+
+```json
+[
+  {
+    "code": "V001",
+    "name": "EnthrallTech",
+    "id": 1
+  }
+]
+```
+
+---
+
+### 11. Get Modules (by Search)
+
+**Endpoint:**
+
+```
+POST /api/v1/module/GetModuleData
+```
+
+**Payload (example):**
+
+```json
+{
+  "page": 1,
+  "pageSize": 5,
+  "search": "Classroom",
+  "columnName": "coursetype",
+  "showAllData": true
+}
+```
+
+---
+
+### 12. Save/Update Course
+
+**Endpoint:**
+
+```
+POST /api/v1/courses/{courseId}
+```
+
+**Example:**
+
+```
+POST /api/v1/courses/20214
+```
+
+**Payload (trimmed):**
+
+```json
+{
+  "id": 20214,
+  "title": "demo courses classroom",
+  "courseType": "Classroom",
+  "courseAdminIDs": ["2549"],
+  "isCertificateIssued": false,
+  "moduleAssociation": [
+    {
+      "moduleId": 18503,
+      "isAssessment": false
+    }
+  ],
+  "vendorId": 1,
+  "vendorName": "EnthrallTech"
+}
+```
+
+**Response:**
+
+```json
+1
+```
+
+---
 
 
 ## Module Management
