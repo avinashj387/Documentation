@@ -38,6 +38,9 @@
    - 8.3 [Get Selected Languages](#83-get-selected-languages)
    - 8.4 [Get Course Enrollment Config](#84-get-course-enrollment-config)
    - 8.5 [Get All Categories](#85-get-all-categories)
+  
+- [Edit Course](#edit-course)
+
    - 8.6 [Subset of Subcategories](#subset-of-subcategories)
 
 
