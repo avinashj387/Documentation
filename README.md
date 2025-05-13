@@ -140,7 +140,8 @@
 - [17.2 Get User Assessment Sheet](#2-get-user-assessment-sheet)
 - [17.3 Get User Assessment Sheet Count](#3-get-user-assessment-sheet-count)
 - [17.4 Get Assessment Response Analysis](#4-get-assessment-response-analysis)
-
+ 18. [Assessment Response Analysis Report](#18-assessment-response-analysis-report)
+- [18.1 Get Assessment Response Analysis](#1-get-assessment-response-analysis)
 ## My Courses
 
 ### 1. Get Paginated Courses
@@ -2412,6 +2413,43 @@ POST /api/v1/Report/GetAssessmentResponseAnalysis
 ```
 
 ---
+
+## 18 Assessment Response Analysis Report
+
+
+### 1. Get Assessment Response Analysis
+
+**Endpoint:**
+
+```
+POST /api/v1/Report/GetAssessmentResponseAnalysis
+```
+
+**Payload:**
+
+```json
+{
+  "courseId": 16152,
+  "startIndex": 1,
+  "pageSize": 10,
+  "sortOrder": null,
+  "count": 0,
+  "search": null,
+  "moduleId": null,
+  "status": null,
+  "ExportAs": null
+}
+```
+
+**Response:**
+
+```json
+{
+  "list": [],
+  "count": 0
+}
+```
+
 
 
 
