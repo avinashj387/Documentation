@@ -127,13 +127,19 @@
 - [15.3 Create MicroLearning Module](#3-create-microlearning-module)
 - [15.4 Get MicroLearning Details by ID](#4-get-microlearning-details-by-id)
 - [15.5 Get Page Number for MicroLearning](#5-get-page-number-for-microlearning)
-### 16. [Assessment Report APIs](#16-assessment-report-apis)
+16. [Assessment Report APIs](#16-assessment-report-apis)
 - [16.1 Get Configurable Report Parameters](#1-get-configurable-report-parameters)
 - [16.2 Get Course Data](#2-get-course-data)
 - [16.3 Get Assessment Result Sheet](#3-get-assessment-result-sheet)
 - [16.4 Get Assessment Result Count](#4-get-assessment-result-count)
 - [16.5 Get Assessment Result Graph Data](#5-get-assessment-result-graph-data)
 - [16.6 Export Assessment Result Sheet](#6-export-assessment-result-sheet)
+  
+ 17. [Additional Assessment Report APIs](#17-additional-assessment-report-apis)
+- [17.1 Get Failed Assessment Result Sheet](#1-get-failed-assessment-result-sheet)
+- [17.2 Get User Assessment Sheet](#2-get-user-assessment-sheet)
+- [17.3 Get User Assessment Sheet Count](#3-get-user-assessment-sheet-count)
+- [17.4 Get Assessment Response Analysis](#4-get-assessment-response-analysis)
 
 ## My Courses
 
@@ -2310,6 +2316,102 @@ POST /api/v1/Report/ExportGetAssessmentResultSheet/
 
 ---
 
+
+
+## 17 Additional Assessment Report APIs
+
+
+### 1. Get Failed Assessment Result Sheet
+
+**Endpoint:**
+
+```
+POST /api/v1/Report/GetFailedAssessmentResultSheet
+```
+
+**Payload:**
+
+```json
+{
+  "courseId": 16152,
+  "startIndex": 1,
+  "pageSize": 10,
+  "status": "Failed"
+}
+```
+
+**Response:**
+
+```json
+{
+  "totalRecordCount": 0,
+  "data": []
+}
+```
+
+---
+
+### 2. Get User Assessment Sheet
+
+**Endpoint:**
+
+```
+POST /api/v1/Report/GetUserAssessmentSheet
+```
+
+**Payload:**
+
+```json
+{
+  "courseId": 16152,
+  "userId": 8795,
+  "startIndex": 1,
+  "pageSize": 10
+}
+```
+
+---
+
+### 3. Get User Assessment Sheet Count
+
+**Endpoint:**
+
+```
+POST /api/v1/Report/GetUserAssessmentSheetCount/
+```
+
+**Payload:**
+
+```json
+{
+  "courseId": 16152,
+  "userId": 8795,
+  "startIndex": 1,
+  "pageSize": 10
+}
+```
+
+---
+
+### 4. Get Assessment Response Analysis
+
+**Endpoint:**
+
+```
+POST /api/v1/Report/GetAssessmentResponseAnalysis
+```
+
+**Payload:**
+
+```json
+{
+  "courseId": 16152,
+  "startIndex": 1,
+  "pageSize": 10
+}
+```
+
+---
 
 
 
