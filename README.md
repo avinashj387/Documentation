@@ -41,6 +41,7 @@
    - 8.6 [Subset of Subcategories](#subset-of-subcategories)
 
 
+
       * [1. Get All Categories](#1get-all-categories)
       * [2. Get Subcategories by Category](#2get-subcategories-by-category)
       * [3. Create a SubSubCategory (Subset)](#3create-a-subsubcategory-subset)
@@ -100,11 +101,23 @@
     - 12.11 [YouTube Integration](#1211-youtube-integration)
     - 12.12 [External Links](#1212-external-links)
     - 12.13 [Assignments](#1213-assignments)
+   - [Edit Course](#edit-course)
 
 13. [Module Management](#module-management)
     - 13.1 [Get Module Data](#131-get-module-data)
     - 13.2 [Get Media Count](#132-get-media-count)
     - 13.3 [Search LCMS Media](#133-search-lcms-media)
+      
+14. [Assessment Attempt Management](#14-assessment-attempt-management)
+
+* [14.1 Get All Assessment Attempts](#1-get-all-assessment-attempts)
+* [14.2 Get Assessment Attempt Count](#2-get-assessment-attempt-count)
+* [14.3 Get Modules for Assessment Course](#3-get-modules-for-assessment-course)
+* [14.4 Search Active or Inactive User](#4-search-active-or-inactive-user)
+* [14.5 Add Assessment Attempt](#5-add-assessment-attempt)
+* [14.6 Upload Attempt File](#6-upload-attempt-file)
+* [14.7 Download Template File](#7-download-template-file)
+* [14.8 Save Uploaded File Data](#8-save-uploaded-file-data)
 
 ## My Courses
 
@@ -1490,6 +1503,237 @@ GET /api/v1/c/SubSubCategory/count
 }
 ```
 
+## Edit Course
+
+### 1. Get Course Details for Editing
+
+**Endpoint:**
+
+```
+GET /api/v1/courses/GetCourseDetailsForUpdate/{courseId}
+```
+
+**Example:**
+
+```
+GET /api/v1/courses/GetCourseDetailsForUpdate/20213
+```
+
+**Response (trimmed):**
+
+```json
+{
+  "id": 20213,
+  "code": "8130",
+  "title": "Day1_About_Max_noGUI",
+  "courseType": "elearning",
+  "courseAdminID": 2549,
+  "isCertificateIssued": false,
+  "completionPeriodDays": 0
+}
+```
+
+---
+
+### 2. Get Course Competency Skills
+
+**Endpoint:**
+
+```
+GET /api/v1/courses/GetCompetencySkillByCourseId/{courseId}
+```
+
+---
+
+### 3. Get Course SubSubCategory
+
+**Endpoint:**
+
+```
+GET /api/v1/courses/GetSubSubCategoryByCourseId/{courseId}
+```
+
+---
+
+###  4. Check Refresher Config
+
+**Endpoint:**
+
+```
+GET /api/v1/ConfigurableParameters/GetValue/REFRESHER
+```
+
+---
+
+### 5. Get Course Categories
+
+**Endpoint:**
+
+```
+GET /api/v1/Category
+```
+
+---
+
+### 6. Get Linked Course Modules
+
+**Endpoint:**
+
+```
+GET /api/v1/courses/GetCoursesModules/{courseId}
+```
+
+**Response (trimmed):**
+
+```json
+[
+  {
+    "id": 24314,
+    "moduleId": 18503,
+    "isAssessment": false
+  }
+]
+```
+
+---
+
+### 7. Get Course Assessments & Feedback Names
+
+**Endpoint:**
+
+```
+GET /api/v1/Courses/GetCoursesAssessmentFeedbackName/null/null/null/null/null/null
+```
+
+**Response (trimmed):**
+
+```json
+{
+  "assessmentName": null,
+  "feedbackName": null
+}
+```
+
+---
+
+### 8. Get Section by Course Code
+
+**Endpoint:**
+
+```
+GET /api/v1/section/{courseCode}
+```
+
+---
+
+### 9. Check EdCast Enabled
+
+**Endpoint:**
+
+```
+GET /api/v1/ConfigurableParameters/GetValue/Enable_Edcast
+```
+
+**Response:**
+
+```json
+{ "value": "No" }
+```
+
+---
+
+### 10. Get Vendor Details
+
+**Endpoint:**
+
+```
+POST /api/v1/courses/GetCourseVendorDetails
+```
+
+**Payload:**
+
+```json
+{ "Vendor_Type": "Internal" }
+```
+
+**Response (trimmed):**
+
+```json
+[
+  {
+    "code": "V001",
+    "name": "EnthrallTech",
+    "id": 1
+  }
+]
+```
+
+---
+
+### 11. Get Modules (by Search)
+
+**Endpoint:**
+
+```
+POST /api/v1/module/GetModuleData
+```
+
+**Payload (example):**
+
+```json
+{
+  "page": 1,
+  "pageSize": 5,
+  "search": "Classroom",
+  "columnName": "coursetype",
+  "showAllData": true
+}
+```
+
+---
+
+### 12. Save/Update Course
+
+**Endpoint:**
+
+```
+POST /api/v1/courses/{courseId}
+```
+
+**Example:**
+
+```
+POST /api/v1/courses/20214
+```
+
+**Payload (trimmed):**
+
+```json
+{
+  "id": 20214,
+  "title": "demo courses classroom",
+  "courseType": "Classroom",
+  "courseAdminIDs": ["2549"],
+  "isCertificateIssued": false,
+  "moduleAssociation": [
+    {
+      "moduleId": 18503,
+      "isAssessment": false
+    }
+  ],
+  "vendorId": 1,
+  "vendorName": "EnthrallTech"
+}
+```
+
+**Response:**
+
+```json
+1
+```
+
+---
+
 
 ## Module Management
 
@@ -1566,6 +1810,194 @@ GET /api/v1/c/SubSubCategory/count
   ]
 }
 ```
+
+##14 Assessment Attempt Management
+
+
+### 1. Get All Assessment Attempts
+
+**Endpoint:**
+
+```
+GET /api/v1/AssessmentAttemptManagement/{page}/{pageSize}
+```
+
+**Example:**
+
+```
+GET /api/v1/AssessmentAttemptManagement/1/10
+```
+
+**Response (trimmed):**
+
+```json
+[
+  {
+    "id": 1042,
+    "courseId": 18782,
+    "courseName": "Assessment iLearn",
+    "userName": "Danish Hussain",
+    "additionalAttempts": 2,
+    "isExhausted": false
+  }
+]
+```
+
+---
+
+### 2. Get Assessment Attempt Count
+
+**Endpoint:**
+
+```
+GET /api/v1/AssessmentAttemptManagement/Count
+```
+
+**Response:**
+
+```json
+43
+```
+
+---
+
+### 3. Get Modules for Assessment Course
+
+**Endpoint:**
+
+```
+GET /api/v1/Module/GetModulesForAssessmentCourses/{courseId}
+```
+
+**Example:**
+
+```
+GET /api/v1/Module/GetModulesForAssessmentCourses/20177
+```
+
+**Response (trimmed):**
+
+```json
+[
+  { "id": 18434, "title": "EFS PPT Testing" },
+  { "id": 18436, "title": "EFS PPT Testing 2" }
+]
+```
+
+---
+
+### 4. Search Active or Inactive User
+
+**Endpoint:**
+
+```
+POST /api/v1/user/searchActiveInActiveUser
+```
+
+**Payload:**
+
+```json
+{
+  "userId": "aX0NGaBB7+oaZe8Bv7m2yQ==",
+  "userType": "Z5pxA9AnsHK8ffqkKF9c9Q=="
+}
+```
+
+**Response (trimmed):**
+
+```json
+[
+  {
+    "name": "LMS Admin",
+    "userType": "Internal",
+    "isDeleted": false
+  }
+]
+```
+
+---
+
+### 5. Add Assessment Attempt
+
+**Endpoint:**
+
+```
+POST /api/v1/AssessmentAttemptManagement
+```
+
+**Payload:**
+
+```json
+{
+  "id": 0,
+  "courseId": 20177,
+  "courseName": "test assessment 0101",
+  "userId": 2549,
+  "userName": "LMS Admin",
+  "additionalAttempts": 10,
+  "ModuleId": 18434
+}
+```
+
+---
+
+### 6. Upload Attempt File
+
+**Endpoint:**
+
+```
+POST /api/v1/AssessmentAttemptManagement/PostFileUpload
+```
+
+**Payload:** File upload (example: LearnerCalendarData.xlsx)
+
+**Response:**
+
+```json
+"/enth/4.5/xlsx/638827453663167559.xlsx"
+```
+
+---
+
+### 7. Download Template File
+
+**Endpoint:**
+
+```
+GET /api/v1/AssessmentAttemptManagement/DownloadFile
+```
+
+---
+
+### 8. Save Uploaded File Data
+
+**Endpoint:**
+
+```
+POST /api/v1/AssessmentAttemptManagement/SaveFileData
+```
+
+**Payload:**
+
+```json
+{
+  "Path": "/enth/4.5/xlsx/638827453959710171.xlsx"
+}
+```
+
+**Response (trimmed):**
+
+```json
+[
+  {
+    "courseCode": "3742",
+    "courseName": "VILT Type Course",
+    "errMessage": "UserId not found. Please enter valid data."
+  }
+]
+```
+
+---
 
 
 
