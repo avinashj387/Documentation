@@ -906,6 +906,37 @@ POST /api/v1/c/SubSubCategory
   "subCategoryName": null
 }
 ```
+### 4.List All SubSubCategories
+
+**Endpoint:**
+
+```
+GET /api/v1/c/SubSubCategory/1/10/null/null/null/
+```
+
+**Response Example:**
+
+```json
+[
+  {
+    "id": 447,
+    "categoryId": 178,
+    "subCategoryId": 425,
+    "code": "PT",
+    "name": "LMS training"
+  }
+]
+```
+
+---
+
+### 5.Get Total SubSubCategory Count
+
+**Endpoint:**
+
+```
+GET /api/v1/c/SubSubCategory/count
+```
 
 
 ## Competency 
