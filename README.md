@@ -127,7 +127,13 @@
 - [15.3 Create MicroLearning Module](#3-create-microlearning-module)
 - [15.4 Get MicroLearning Details by ID](#4-get-microlearning-details-by-id)
 - [15.5 Get Page Number for MicroLearning](#5-get-page-number-for-microlearning)
-
+### 16. [Assessment Report APIs](#16-assessment-report-apis)
+- [16.1 Get Configurable Report Parameters](#1-get-configurable-report-parameters)
+- [16.2 Get Course Data](#2-get-course-data)
+- [16.3 Get Assessment Result Sheet](#3-get-assessment-result-sheet)
+- [16.4 Get Assessment Result Count](#4-get-assessment-result-count)
+- [16.5 Get Assessment Result Graph Data](#5-get-assessment-result-graph-data)
+- [16.6 Export Assessment Result Sheet](#6-export-assessment-result-sheet)
 
 ## My Courses
 
@@ -2132,6 +2138,174 @@ GET /api/v1/AuthoringMaster/GetPageNumber/1287
 
 ```json
 0
+```
+
+---
+
+
+## 16 Assessment Report APIs
+
+### 1. Get Configurable Report Parameters
+
+**Endpoint:**
+
+```
+GET /api/v1/ConfigurableParameters/GetByParameterType/REPORT/CLIENT
+```
+
+**Response (trimmed):**
+
+```json
+[
+  {
+    "code": "SHOW_CONFCOLUMNS_INREPORT",
+    "value": "Yes",
+    "parameterType": "REPORT"
+  },
+  {
+    "code": "SSR",
+    "value": "Yes",
+    "parameterType": "REPORT"
+  }
+]
+```
+
+---
+
+### 2. Get Course Data
+
+**Endpoint:**
+
+```
+POST /api/v1/courses/GetCourseData
+```
+
+**Payload (example):**
+
+```json
+{
+  "page": 1,
+  "pageSize": 300,
+  "categoryId": null,
+  "IsActive": true,
+  "search": "",
+  "filter": "",
+  "showAllData": "false"
+}
+```
+
+**Response (trimmed):**
+
+```json
+{
+  "data": [
+    {
+      "id": 30465,
+      "title": "schedule ilt test",
+      "courseType": "Classroom",
+      "isActive": true,
+      "userName": "Lms Admin",
+      "totalModules": 1
+    }
+  ]
+}
+```
+
+---
+
+### 3. Get Assessment Result Sheet
+
+**Endpoint:**
+
+```
+POST /api/v1/Report/GetAssessmentResultSheet/
+```
+
+**Payload:**
+
+```json
+{
+  "courseId": 20989,
+  "startIndex": 1,
+  "pageSize": 10
+}
+```
+
+
+---
+
+### 4. Get Assessment Result Count
+
+**Endpoint:**
+
+```
+POST /api/v1/Report/GetAssessmentResultSheetCount/
+```
+
+**Payload:**
+
+```json
+{
+  "courseId": 20989,
+  "startIndex": 1,
+  "pageSize": 10
+}
+```
+
+**Response:**
+
+```json
+0
+```
+
+---
+
+### 5. Get Assessment Result Graph Data
+
+**Endpoint:**
+
+```
+POST /api/v1/Report/GetAssessmentResultSheetGraph
+```
+
+**Payload:**
+
+```json
+{
+  "courseId": 20989,
+  "startIndex": 1,
+  "pageSize": 10
+}
+```
+
+**Response:**
+
+```json
+{
+  "counts": [],
+  "results": []
+}
+```
+
+---
+
+### 6. Export Assessment Result Sheet
+
+**Endpoint:**
+
+```
+POST /api/v1/Report/ExportGetAssessmentResultSheet/
+```
+
+**Payload:**
+
+```json
+{
+  "courseId": 20989,
+  "startIndex": 1,
+  "pageSize": 10,
+  "ExportAs": "xlsx"
+}
 ```
 
 ---
