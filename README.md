@@ -142,6 +142,20 @@
 - [17.4 Get Assessment Response Analysis](#4-get-assessment-response-analysis)
  18. [Assessment Response Analysis Report](#18-assessment-response-analysis-report)
 - [18.1 Get Assessment Response Analysis](#1-get-assessment-response-analysis)
+
+ 19. [Assessment Reports](#19-assessment-reports)
+- [19.1 Get Top 5 Performers Export](#1-get-top-5-performers-export)
+- [19.2 Get Top Performer Graph](#2-get-top-performer-graph)
+- [19.3 Get Bottom 5 Performers Export](#3-get-bottom-5-performers-export)
+- [19.4 Get Unit-wise Assessment Report Export](#4-get-unit-wise-assessment-report-export)
+- [19.5 Get Unit-wise Assessment Graph](#5-get-unit-wise-assessment-graph)
+- [19.6 Get Course Completion Rate Export](#6-get-course-completion-rate-export)
+- [19.7 Get Course Completion Rate Data](#7-get-course-completion-rate-data)
+- [19.8 Get Categories](#8-get-categories-for-filters)
+- [19.9 Get Category-wise Report Export](#9-get-category-wise-report-export)
+- [19.10 Get Category-wise Report Graph](#10-get-category-wise-report-graph)
+- [19.11 Get Deployed vs Completed Assessment Report Export](#11-get-deployed-vs-completed-assessment-report-export)
+- [19.12 Get Deployed vs Completed Assessment Graph](#12-get-deployed-vs-completed-assessment-graph)
 ## My Courses
 
 ### 1. Get Paginated Courses
@@ -2450,6 +2464,264 @@ POST /api/v1/Report/GetAssessmentResponseAnalysis
 }
 ```
 
+
+## 19 Assessment Reports
+
+This section provides endpoints for analytical insights like top/bottom performers, course completion, unit-wise stats, and assessment deployment vs completion.
+
+### 1. Get Top 5 Performers Export
+
+**Endpoint:**
+
+```
+POST /api/v1/AnalyticalDashboard/GetAssessmentTop5AnalyaticalDashboardExport
+```
+
+**Payload:**
+
+```json
+{
+  "courseIds": [54],
+  "graphType": null
+}
+```
+
+---
+
+### 2. Get Top Performer Graph
+
+**Endpoint:**
+
+```
+POST /api/v1/AnalyticalDashboard/GetAssessmentTopPerformerGraph
+```
+
+**Payload:**
+
+```json
+{
+  "courseIds": [54],
+  "graphType": null
+}
+```
+
+---
+
+### 3. Get Bottom 5 Performers Export
+
+**Endpoint:**
+
+```
+POST /api/v1/AnalyticalDashboard/GetAssessmentBottom5AnalyaticalDashboardExport
+```
+
+**Payload:**
+
+```json
+{
+  "courseIds": [54],
+  "graphType": null
+}
+```
+
+---
+
+### 4. Get Unit-wise Assessment Report Export
+
+**Endpoint:**
+
+```
+POST /api/v1/AnalyticalDashboard/GetAssessmentAnalyaticalDashboardExport
+```
+
+**Payload:**
+
+```json
+{
+  "courseIds": [54],
+  "graphType": "Unit"
+}
+```
+
+---
+
+### 5. Get Unit-wise Assessment Graph
+
+**Endpoint:**
+
+```
+POST /api/v1/AnalyticalDashboard/GetAssessmentAnalyticalDashboardGraph
+```
+
+**Payload:**
+
+```json
+{
+  "courseIds": [54],
+  "graphType": "Unit"
+}
+```
+
+---
+
+### 6. Get Course Completion Rate Export
+
+**Endpoint:**
+
+```
+POST /api/v1/AnalyticalDashboard/GetCompletionRateExport
+```
+
+**Payload:**
+
+```json
+{
+  "startDate": "2023-02-01T00:00:00",
+  "endDate": "2025-02-06T00:00:00"
+}
+```
+
+---
+
+### 7. Get Course Completion Rate Data
+
+**Endpoint:**
+
+```
+POST /api/v1/AnalyticalDashboard/GetCompletionRate
+```
+
+**Payload:**
+
+```json
+{
+  "startDate": "2023-02-01T00:00:00",
+  "endDate": "2025-02-06T00:00:00"
+}
+```
+
+**Response (example):**
+
+```json
+[
+  {
+    "completionRate": 100.0,
+    "courseId": "2",
+    "courseName": "Practising Business Etiquettes"
+  }
+]
+```
+
+---
+
+### 8. Get Categories (for Filters)
+
+**Endpoint:**
+
+```
+GET /api/v1/Category
+```
+
+---
+
+### 9. Get Category-wise Report Export
+
+**Endpoint:**
+
+```
+POST /api/v1/AnalyticalDashboard/GetCategoryExport
+```
+
+**Payload:**
+
+```json
+{
+  "category1": null,
+  "category2": null,
+  "category3": null,
+  "category4": null,
+  "category5": null
+}
+```
+
+---
+
+### 10. Get Category-wise Report Graph
+
+**Endpoint:**
+
+```
+POST /api/v1/AnalyticalDashboard/GetCategoryWiseGraph
+```
+
+**Payload:**
+
+```json
+{
+  "category1": "8"
+}
+```
+
+---
+
+### 11. Get Deployed vs Completed Assessment Report Export
+
+**Endpoint:**
+
+```
+POST /api/v1/AnalyticalDashboard/Export
+```
+
+**Payload:**
+
+```json
+{
+  "startDate": "01 Feb 1996",
+  "endDate": "01 May 2025"
+}
+```
+
+---
+
+### 12. Get Deployed vs Completed Assessment Graph
+
+**Endpoint:**
+
+```
+POST /api/v1/AnalyticalDashboard/DeployAssessGraph
+```
+
+**Payload:**
+
+```json
+{
+  "startDate": "1996-02-01T00:00:00",
+  "endDate": "2025-05-01T00:00:00"
+}
+```
+
+**Response (example):**
+
+```json
+[
+  {
+    "courseId": 17070,
+    "courseName": "report 1",
+    "totaldeployed": 6,
+    "totalcompleted": 2,
+    "completionPercentage": 33.33
+  },
+  {
+    "courseId": 17073,
+    "courseName": "report 3",
+    "totaldeployed": 1,
+    "totalcompleted": 1,
+    "completionPercentage": 100.0
+  }
+]
+```
+
+---
 
 
 
