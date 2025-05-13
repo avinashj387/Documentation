@@ -38,6 +38,15 @@
    - 8.3 [Get Selected Languages](#83-get-selected-languages)
    - 8.4 [Get Course Enrollment Config](#84-get-course-enrollment-config)
    - 8.5 [Get All Categories](#85-get-all-categories)
+   - 8.6 [Subset of Subcategories](#subset-of-subcategories)
+
+
+      * [1. Get All Categories](#1get-all-categories)
+      * [2. Get Subcategories by Category](#2get-subcategories-by-category)
+      * [3. Create a SubSubCategory (Subset)](#3create-a-subsubcategory-subset)
+      * [4. List All SubSubCategories](#4list-all-subsubcategories)
+      * [5. Get Total SubSubCategory Count](#5get-total-subsubcategory-count)
+
 9. [Competency](#competency)
     - 9.1 [Get Competency Hub Data](#91-get-competency-hub-data)
     - 9.2 [Get Competency Spider Chart](#92-get-competency-spider-chart)
@@ -826,6 +835,77 @@
   }
 ]
 ```
+## Subset of Subcategories
+
+### 1.Get All Categories
+
+**Endpoint:**
+
+```
+GET /api/v1/Category
+```
+
+**Example Response:**
+
+```json
+[
+  {
+    "id": 178,
+    "name": "Software,IT and Web Development"
+  }
+]
+```
+
+---
+
+### 2.Get Subcategories by Category
+
+**Endpoint:**
+
+```
+GET /api/v1/SubCategory/GetSubCategoryByCategory/{categoryId}
+```
+
+**Example:**
+
+```
+GET /api/v1/SubCategory/GetSubCategoryByCategory/178
+```
+
+**Response:**
+
+```json
+[
+  {
+    "id": 425,
+    "name": "Product training"
+  }
+]
+```
+
+---
+
+### 3.Create a SubSubCategory (Subset)
+
+**Endpoint:**
+
+```
+POST /api/v1/c/SubSubCategory
+```
+
+**Payload Example:**
+
+```json
+{
+  "id": null,
+  "categoryId": 178,
+  "subCategoryId": 425,
+  "code": "287",
+  "name": "SQL SERVER",
+  "categoryName": null,
+  "subCategoryName": null
+}
+```
 
 
 ## Competency 
@@ -1154,7 +1234,7 @@
 {"value":"No"}
 ```
 
-## Course Management {#course-management}
+## Course Management 
 
 
 ### 12.1 Get LCMS Media 
@@ -1243,7 +1323,7 @@
 | `fileForUpload` | binary | Yes | PDF file content | - |
 
 
-### 12.6 Content Size Limits {#126-content-size-limits}
+### 12.6 Content Size Limits
 * **Endpoint**: `GET /api/v1/MasterPageSetting/GetFileFormatSize/{type}`
 * **Supported Types**:
   | Content Type       | Max Size | Example Response |
@@ -1254,7 +1334,7 @@
   | `PODCAST`          | 3MB      | `{"id":12,"size":3072}` |
   | `ADDITIONAL_RESOURCE` | 50MB | `{"id":28,"size":51200}` |
 
-### 12.7 H5P Content {#127-h5p-content}
+### 12.7 H5P Content
 * **Endpoint**: `POST /api/v1/LCMS/GetLCMSMedia`
 * **Payload**:
 ```json
@@ -1272,7 +1352,7 @@
 }
 ```
 
-### 12.8 Video Content {#128-video-content}
+### 12.8 Video Content
 * **Endpoint**: `POST /api/v1/LCMS/GetLCMSMedia`
 * **Vimeo Status Check**:
   ```bash
@@ -1295,7 +1375,7 @@
   173
   ```
 
-### 12.10 Audio/Podcast {#1210-audiopodcast}
+### 12.10 Audio/Podcast
 * **Endpoint**: `POST /api/v1/LCMS/GetLCMSMedia`
 * **Payload**:
 ```json
@@ -1311,7 +1391,7 @@
 }
 ```
 
-### 12.11 YouTube Integration {#1211-youtube-integration}
+### 12.11 YouTube Integration 
 * **Endpoint**: `POST /api/v1/LCMS/GetLCMSMedia`
 * **Response**:
 ```json
@@ -1323,7 +1403,7 @@
 }
 ```
 
-### 12.12 External Links {#1212-external-links}
+### 12.12 External Links
 * **Endpoint**: `POST /api/v1/LCMS/GetLCMSMedia`
 * **Response**:
 ```json
@@ -1335,7 +1415,7 @@
 }
 ```
 
-### 12.13 Assignments {#1213-assignments}
+### 12.13 Assignments
 * **Endpoint**: `POST /api/v1/LCMS/GetLCMSMedia`
 * **Payload**:
 ```json
