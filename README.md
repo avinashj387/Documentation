@@ -168,6 +168,9 @@
 - [20.8 Export Attendance Summary Report](#8-export-attendance-summary-report)
 - [20.9 Get Attendance Summary Report](#9-get-attendance-summary-report)
 - [20.10 Get Attendance Summary Report Count](#10-get-attendance-summary-report-count)
+ [Internal Trainers Schedule Report](#21-internal-trainers-schedule-report)
+- [20.11 Search for Internal Trainers](#1-search-for-internal-trainers)
+- [20.12 Export Internal Trainers Schedule Report](#2-export-internal-trainers-schedule-report)
 
 
 ## My Courses
@@ -2736,7 +2739,7 @@ POST /api/v1/AnalyticalDashboard/DeployAssessGraph
 ```
 
 
-## 20 ILT Reports
+## 20. ILT Reports
 
 
 ### 1. ILT Completion Report
@@ -2916,6 +2919,53 @@ POST /api/v1/Report/GetAttendenceSummuryReportCount
 **Same payload as above**
 
 ---
+ 20. Internal Trainers Schedule Report
+
+
+### 1. Search for Internal Trainers
+
+**Endpoint:**
+
+```
+POST /api/v1/User/GetTypeAhead
+```
+
+**Payload (example):**
+
+```json
+{
+  "searchByColumn": "lbY9NRTamILZYgQ+kSRoYA==",
+  "searchText": "bP654GgMMaQM9Xn9sUdrvg=="
+}
+```
+
+**Note:** This is typically used to look up internal trainer details by encrypted parameters.
+
+---
+
+### 2. Export Internal Trainers Schedule Report
+
+**Endpoint:**
+
+```
+POST /api/v1/ILTReport/ExportGetInternalTrainersScheduleReport
+```
+
+**Payload:**
+
+```json
+{
+  "academyAgencyID": 0,
+  "startDate": "2019-01-01T10:56:34.000Z",
+  "endDate": "2025-05-01T10:56:34.000Z",
+  "startIndex": 1,
+  "pageSize": null,
+  "search": null,
+  "RegionID": 8,
+  "count": null,
+  "ExportAs": "xlsx"
+}
+```
 
 
 
